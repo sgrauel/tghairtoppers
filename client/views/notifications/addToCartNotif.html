@@ -1,0 +1,17 @@
+<template name="addToCart">
+        <div class="ui fixed top sticky">
+                <div class="ui left internal rail">
+                    <div class="ui floating positive message">
+                        <i id="closeNotif" class="close icon"></i>
+                        <i class="checkmark icon"></i>
+                        <p>{{ title }} <strong>added to cart</strong></p><br>
+                        <a href="{{pathFor 'ShoppingCart'}}">
+                            <button class="ui labeled icon button">
+                                <i class="in cart icon"></i>
+                                Go to Cart
+                            </button>
+                        </a>
+                    </div>
+                </div>
+        </div>
+</template>

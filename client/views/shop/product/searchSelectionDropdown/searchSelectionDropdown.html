@@ -1,0 +1,14 @@
+<template name="searchSelectionDropdown">
+    <div class="ui fluid search selection dropdown" data-action="task/dropdown">
+        <input id="searchSelectionDropdown" name="categories" type="hidden">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Product Category</div>
+        <div class="ui menu">
+            {{#each topLevelProductCategories }}
+                {{> productCategoryItem }}
+            {{/each}}
+        </div>
+
+    </div>
+</template>
+

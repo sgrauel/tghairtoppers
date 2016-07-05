@@ -1,0 +1,39 @@
+<template name="sortingInterface">
+    <div class="ui form">
+
+        {{#if isHighestToLowest }}
+                <div class="inline fields">
+                    <label>What would you like to sort by?</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="priceHighestLowest" name="frequency" checked="checked" type="radio">
+                            <label>Price from highest to lowest</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="priceLowestHighest" name="frequency" type="radio">
+                            <label>Price from lowest to highest</label>
+                        </div>
+                    </div>
+                </div>
+        {{else}}
+                <div class="inline fields">
+                    <label>What would you like to sort by?</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="priceHighestLowest" name="frequency" type="radio">
+                            <label>Price from highest to lowest</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input id="priceLowestHighest" name="frequency" checked="checked" type="radio">
+                            <label>Price from lowest to highest</label>
+                        </div>
+                    </div>
+                </div>
+        {{/if}}
+
+    </div>
+</template>

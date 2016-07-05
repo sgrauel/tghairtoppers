@@ -1,0 +1,15 @@
+<template name="inStockCheckbox">
+
+    {{#if checked }}
+        <div class="ui checked checkbox">
+            <input id="instock" checked="" type="checkbox">
+            <label>IN-STOCK</label>
+        </div>
+    {{else}}
+        <div class="ui checkbox">
+            <input id="instock" name="example" type="checkbox">
+            <label>OUT-OF-STOCK</label>
+        </div>
+    {{/if}}
+
+</template>

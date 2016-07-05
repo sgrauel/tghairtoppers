@@ -1,0 +1,19 @@
+<template name="Products">
+        {{> searchSelectionDropdown }}
+        &nbsp;&nbsp;
+        <div id="slider"></div>
+        {{> twoHandleSliders }}
+        {{> sortingInterface }}
+
+        <a href="{{pathFor 'ShoppingCart'}}">
+            <button class="ui labeled icon button">
+                <i class="large cart icon"></i>
+                Go to Shopping Cart
+            </button>
+        </a>
+
+        <!-- {{> inStockCheckbox }} -->
+        &nbsp;&nbsp;
+        <!-- {{> mostLikedCheckbox }} -->
+        &nbsp;&nbsp;
+</template>

@@ -1,0 +1,49 @@
+<template name="Shop">
+
+    <div class="ui center aligned container">
+
+        <h1 class="ui header">The Shop</h1>
+        <br>
+
+        <div class="ui massive buttons">
+            {{#if shop.viewProduct }}
+                <button class="ui positive button">View Products</button>
+                <div class="or"></div>
+                <button id="viewStylists" class="ui button">View Services</button>
+            {{else}}
+                <button id="viewProducts" class="ui button">View Products</button>
+                <div class="or"></div>
+                <button class="ui positive button">View Services</button>
+            {{/if}}
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="center aligned container">
+        {{#if shop.viewProduct }}
+            
+            {{> Products }}
+
+            <br>
+
+            <div class="ui divider"></div>
+
+            <div class="ui divided items">
+                    {{#each products }}
+                        {{> ProductItem }}
+                    {{/each}}
+            </div>
+
+            <div class="ui divider"></div>
+
+            {{#if isMoreProducts }}
+                <a href="{{nextPath}}"><button class="fluid ui basic black button">View More Products</button></a><br>
+            {{/if}}
+        {{else}}
+            {{> Services }}
+        {{/if}}
+
+    </div>
+
+</template>

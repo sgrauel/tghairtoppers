@@ -1,0 +1,12 @@
+#iron-router-progress {
+    background-color: red;
+    box-shadow: 0 0 5px black;
+    position: absolute;
+    top: -7em;
+    width:100%;
+    z-index: 100;
+}
+
+#iron-router-progress.spinner:before {
+    border-color : red;
+}

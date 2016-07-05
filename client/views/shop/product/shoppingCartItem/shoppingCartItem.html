@@ -1,0 +1,60 @@
+<template name="ShoppingCartItem">
+        {{#if isAddedFunc }}
+            <tr>
+                <td><img class="ui mini circular image" src="{{featured_src}}"></td>
+                <td>{{title}}</td>
+                <td>${{price}}</td>
+                <td>
+                    <button id="decrement" class="mini ui icon left attached red button">
+                        <i class="minus icon"></i>
+                    </button>
+                    <div class="ui mini input">
+                        <input value="{{quantity}}" type="text" readonly>
+                    </div>
+                    <button id="increment" class="right attached mini ui icon green button">
+                        <i class="plus icon"></i>
+                    </button>
+                </td>
+                <td>${{totalPrice}}</td>
+                <td>
+                    <button id="remove" class="negative ui icon button">
+                        <i class="minus icon"></i>
+                    </button>
+                    <a href="{{pathFor "ProductPage" _id=this._id}}">
+                        <button id="view" class="ui icon button">
+                            <i class="unhide icon"></i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {{else}}
+            <tr class="negative">
+                <td><img class="ui mini circular image" src="{{featured_src}}"></td>
+                <td>{{title}}</td>
+                <td>${{price}}</td>
+                <td>
+                    <button id="decrement" class="mini ui icon left attached red button">
+                        <i class="minus icon"></i>
+                    </button>
+                    <div class="ui mini input">
+                        <input value="{{quantity}}" type="text" readonly>
+                    </div>
+                    <button id="increment" class="right attached mini ui icon green button">
+                        <i class="plus icon"></i>
+                    </button>
+                </td>
+                <td>${{totalPrice}}</td>
+                <td>
+                    <button id="add" class="positive ui icon button">
+                        <i class="add icon"></i>
+                    </button>
+                    <a href="{{pathFor "ProductPage" _id=this._id}}">
+                        <button id="view" class="ui icon button">
+                            <i class="unhide icon"></i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {{/if}}
+
+</template>

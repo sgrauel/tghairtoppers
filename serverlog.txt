@@ -1,0 +1,66 @@
+[[[[[ ~/coding/meteor/tghairtoppers ]]]]]
+
+=> Started proxy.
+=> Started MongoDB.
+=> Started your app.
+
+=> App running at: http://localhost:3000/
+[34mI20151211-02:20:09.680(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:09.681(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:09.682(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:09.682(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:09.682(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:09.682(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:09.682(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:09.682(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:09.682(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)
+[34mI20151211-02:20:13.320(-5)? [39mHTTP response: [object Object]
+[34mI20151211-02:20:14.488(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:14.488(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:14.488(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:14.488(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:14.488(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:14.489(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:14.489(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:14.489(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:14.489(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)
+[34mI20151211-02:20:16.589(-5)? [39mHTTP response: [object Object]
+[34mI20151211-02:20:19.493(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:19.494(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:19.494(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:19.495(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:19.496(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:19.499(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:19.500(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:19.500(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:19.501(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)
+[34mI20151211-02:20:21.477(-5)? [39mHTTP response: [object Object]
+[34mI20151211-02:20:24.498(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:24.498(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:24.499(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:24.500(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:24.500(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:24.500(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:24.500(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:24.501(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:24.501(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)
+[34mI20151211-02:20:26.497(-5)? [39mHTTP response: [object Object]
+[34mI20151211-02:20:29.504(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:29.504(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:29.505(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:29.505(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:29.505(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:29.506(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:29.507(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:29.507(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:29.508(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)
+[34mI20151211-02:20:31.626(-5)? [39mHTTP response: [object Object]
+[34mI20151211-02:20:34.507(-5)? [39mException in setInterval callback: TypeError: Cannot use 'in' operator to search for 'products' in undefined
+[34mI20151211-02:20:34.508(-5)? [39m    at packages/underscore/underscore.js:860:1
+[34mI20151211-02:20:34.508(-5)? [39m    at Array.forEach (packages/es5-shim/.npm/package/node_modules/es5-shim/es5-shim.js:417:1)
+[34mI20151211-02:20:34.509(-5)? [39m    at _.each._.forEach (packages/underscore/underscore.js:105:1)
+[34mI20151211-02:20:34.509(-5)? [39m    at Function._.pick (packages/underscore/underscore.js:859:1)
+[34mI20151211-02:20:34.510(-5)? [39m    at collections/products.js:21:31
+[34mI20151211-02:20:34.510(-5)? [39m    at [object Object]._.extend.withValue (packages/meteor/dynamics_nodejs.js:56:1)
+[34mI20151211-02:20:34.511(-5)? [39m    at packages/meteor/timers.js:6:1
+[34mI20151211-02:20:34.511(-5)? [39m    at runWithEnvironment (packages/meteor/dynamics_nodejs.js:110:1)

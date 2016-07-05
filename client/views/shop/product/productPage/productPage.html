@@ -1,0 +1,59 @@
+<template name="ProductPage">
+
+        <div class="ui huge breadcrumb">
+            <a class="section" href="{{pathFor 'Shop'}}">Shop</a>
+            <i class="right chevron icon divider"></i>
+            <div class="active section">{{ title }}</div>
+        </div>
+
+        <div class="ui fluid card">
+            <div class="image">
+                <img id="bigImage" src="{{ featured_src }}">
+            </div>
+
+            <div class="content">
+
+                <div class="ui small images">
+                    {{#each images}}
+                        <img id="altImg" src="{{src}}">
+                    {{/each}}
+                </div>
+
+                <div class="header">
+                    <div style="display: inline"><h1>Price: ${{ price }}</h1></div>
+                    <div style="display: inline"><h1>Quantity in Stock ({{ stock_quantity }})</h1></div>
+                </div>
+
+                <br>
+
+                {{{ description }}}
+
+                <div id="addToCart" class="ui bottom attached button">
+                    Add to Cart
+                </div>
+
+                <a href="{{pathFor 'ShoppingCart'}}">
+                    <div class="ui bottom attached button">
+                        View my Cart
+                    </div>
+                </a>
+
+                <a href="{{pathFor 'Shop'}}">
+                    <div class="ui bottom attached button">
+                        Take me back to the Shop
+                    </div>
+                </a>
+
+                <div class="ui bottom attached button">
+                    I'm all done shopping. Take me to checkout
+                </div>
+
+
+            </div>
+        </div>
+
+        {{#if showNotif}}
+            {{> addToCart }}
+        {{/if}}
+
+</template>

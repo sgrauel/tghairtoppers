@@ -1,0 +1,56 @@
+<template name="ProductItem">
+        <div class="item ui attached segment">
+            <div class="image">
+                <img src="{{ images.[0].src }}" alt="NO IMAGE AVAILABLE">
+            </div>
+            <div class="content">
+                <div class="header">{{ title }}</div>
+                <div class="meta">
+                    <span class="price">${{ price }}</span>
+
+                    {{#if in_stock}}
+                        <span class="stockQuantity">{{ stock_quantity }} items in stock</span>
+                    {{else}}
+                        <span class="outOfStock">OUT OF STOCK</span>
+                    {{/if}}
+
+                    <!-- <span class="likeButton"><i class="like icon"></i></span> -->
+
+
+                </div>
+                <div class="description">
+                    {{{ short_description }}}
+                </div>
+
+                <!--
+                <div class="totalLikes">
+                    <i class="green check icon"></i>
+                </div>
+                -->
+
+                <!--
+                <button class="fluid ui button">View Product</button>
+                <br>
+                <button class="fluid ui button">Add to Cart</button>
+                -->
+
+            </div>
+        </div>
+
+        <a href="{{ pathFor 'ProductPage' _id=this._id}}">
+            <div id="viewProduct" class="ui bottom attached button" tabindex="0">
+                View Product
+            </div>
+        </a>
+
+        <br>
+            <div id="addToCartShop" class="ui bottom attached button" tabindex="0">Add to Cart</div>
+        <br>
+
+        {{#if showNotifShop}}
+            {{#with showProduct }}
+                {{> addToCart }}
+            {{/with}}
+        {{/if}}
+
+</template>
