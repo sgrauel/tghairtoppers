@@ -35,7 +35,7 @@ Meteor.methods({
 
        const intervalId = Meteor.setInterval(function () {
 
-           console.log('HTTP call to Product API!!!')
+           console.log('HTTP call to Product API!!!');
 
             try {
                 // make the API call to Woocommerce v.3 and return a list of products

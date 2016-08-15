@@ -5,35 +5,23 @@
             </div>
             <div class="content">
                 <div class="header">{{ title }}</div>
+
+                <!-- price and stock should not be included -->
                 <div class="meta">
                     <span class="price">${{ price }}</span>
 
+                    <!--
                     {{#if in_stock}}
                         <span class="stockQuantity">{{ stock_quantity }} items in stock</span>
                     {{else}}
                         <span class="outOfStock">OUT OF STOCK</span>
                     {{/if}}
-
-                    <!-- <span class="likeButton"><i class="like icon"></i></span> -->
-
-
+                    -->
                 </div>
+
                 <div class="description">
                     {{{ short_description }}}
                 </div>
-
-                <!--
-                <div class="totalLikes">
-                    <i class="green check icon"></i>
-                </div>
-                -->
-
-                <!--
-                <button class="fluid ui button">View Product</button>
-                <br>
-                <button class="fluid ui button">Add to Cart</button>
-                -->
-
             </div>
         </div>
 

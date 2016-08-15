@@ -1,6 +1,5 @@
 <template name="header">
 
-    &nbsp;
     <div class="ui secondary pointing menu">
 
         {{#if menu.home}}
@@ -10,16 +9,6 @@
         {{else}}
             <a class="item" href="{{pathFor 'Home'}}">
                 Home
-            </a>
-        {{/if}}
-
-        {{#if menu.meetTeam}}
-            <a class="item active" href="{{pathFor 'MeetTeam'}}">
-                Meet the Team
-            </a>
-        {{else}}
-            <a class="item" href="{{pathFor 'MeetTeam'}}">
-                Meet the Team
             </a>
         {{/if}}
 
@@ -33,15 +22,7 @@
             </a>
         {{/if}}
 
-
-        <a class="item">
-            Services
-        </a>
-        <a class="item">
-            Galleries
-        </a>
-
-        {{#if menu.contact}}
+        {{#if menu.contact }}
             <a class="item active" href="{{pathFor 'Contact'}}">
                 Contact
             </a>
@@ -51,10 +32,6 @@
             </a>
         {{/if}}
 
-        <div class="right menu">
-            <a class="ui item">
-            </a>
-        </div>
     </div>
 
     &nbsp;&nbsp;

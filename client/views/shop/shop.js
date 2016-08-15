@@ -1,4 +1,4 @@
-Session.setDefault("_isViewProduct",true);
+Session.setDefault("_isViewProduct",false);
 
 Template.Shop.events({
     'click #viewStylists': function () {
@@ -21,3 +21,7 @@ Template.Shop.helpers({
         }
     }
 });
+
+Template.Shop.onRendered = function() {
+    $('.sidebar').sidebar('overlay',false);
+};

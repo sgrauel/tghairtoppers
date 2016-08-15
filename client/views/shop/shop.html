@@ -1,49 +1,76 @@
 <template name="Shop">
 
-    <div class="ui center aligned container">
+    {{#if shop.viewProduct }}
+    <div class="center aligned ui grid">
+        <div class="row">
+            <div class="column">
+                <h1 class="ui header">The Shop</h1>
+                <br>
 
-        <h1 class="ui header">The Shop</h1>
-        <br>
-
-        <div class="ui massive buttons">
-            {{#if shop.viewProduct }}
-                <button class="ui positive button">View Products</button>
-                <div class="or"></div>
-                <button id="viewStylists" class="ui button">View Services</button>
-            {{else}}
-                <button id="viewProducts" class="ui button">View Products</button>
-                <div class="or"></div>
-                <button class="ui positive button">View Services</button>
-            {{/if}}
+                <div class="ui massive buttons">
+                        <button id="viewStylists" class="ui button">View Services</button>
+                        <div class="or"></div>
+                        <button class="ui positive button">View Products</button>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="left aligned ui grid">
+        <div class="row">
+            <div class="one wide column"></div>
+            <div class="fourteen wide column">
+                {{> Products }}
 
-    <br><br>
+                <br>
 
-    <div class="center aligned container">
-        {{#if shop.viewProduct }}
-            
-            {{> Products }}
+                <div class="ui divider"></div>
 
-            <br>
-
-            <div class="ui divider"></div>
-
-            <div class="ui divided items">
+                <div class="ui divided items">
                     {{#each products }}
                         {{> ProductItem }}
                     {{/each}}
+                </div>
+
+                <div class="ui divider"></div>
+
+                {{#if isMoreProducts }}
+                    <a href="{{nextPath}}"><button class="fluid ui basic black button">View More Products</button></a><br>
+                {{/if}}
+            </div>
+            <div class="one wide column"></div>
+        </div>
+    </div>
+    {{else}}
+        <div class="center aligned ui grid">
+
+            <div class="row">
+                <div class="column">
+                    <h1 class="ui header">The Shop</h1>
+                    <br>
+
+                    <div class="ui massive buttons">
+                            <button class="ui positive button">View Services</button>
+                            <div class="or"></div>
+                            <button id="viewProducts" class="ui button">View Products</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center aligned ui grid">
+
+            <div class="row">
+                <div class="five wide column"></div>
+                <div class="ten wide column">
+                    {{> Services }}
+                </div>
+
             </div>
 
-            <div class="ui divider"></div>
+        </div>
+    {{/if}}
 
-            {{#if isMoreProducts }}
-                <a href="{{nextPath}}"><button class="fluid ui basic black button">View More Products</button></a><br>
-            {{/if}}
-        {{else}}
-            {{> Services }}
-        {{/if}}
 
-    </div>
 
 </template>

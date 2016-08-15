@@ -1,4 +1,24 @@
+Session.setDefault('total',0.0);
+
 Template.ShoppingCart.events({
+    'click #customButton': function(e) {
+
+        const handler = StripeCheckout.configure({
+            key: 'pk_test_3oPENdHQ65sigMm5Hpp47Rkh',
+            image: 'https://s3.amazonaws.com/stripe-uploads/acct_18hIJbEtRwJmPSv0merchant-icon-1470919150448-TG_black_on_white.jpg',
+            locale: 'auto',
+            bitcoin: true
+        });
+
+        // Open Checkout with further options:
+        handler.open({
+            name: 'TG Hair Toppers',
+            description: 'Go forward, faith will come to you',
+            amount: (Session.get('total') * 100)
+        });
+
+        e.preventDefault();
+    }
 });
 
 Template.ShoppingCart.helpers({
@@ -27,6 +47,7 @@ Template.ShoppingCart.helpers({
         const xs = ShoppingCart.find({}).fetch();
         const ys = xs.filter(obj => obj.isAdded);
         const zs = ys.map(obj => obj.price * obj.quantity);
+        Session.set('total',zs.reduce((x,y) => x + y,0));
         return zs.reduce((x,y) => x + y,0);
     }
 });

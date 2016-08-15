@@ -1,37 +1,55 @@
 <template name="ShoppingCart">
 
-    <div class="ui huge breadcrumb">
-        <a class="section" href="{{pathFor 'Shop'}}">Shop</a>
-        <i class="right chevron icon divider"></i>
-        <div class="active section">Shopping Cart</div>
-    </div>
+    <div class="ui grid">
+        <div class="row">
+            <div class="one wide column"></div>
+            <div class="fourteen wide column">
+                <div class="ui huge breadcrumb">
+                    <a class="section" href="{{pathFor 'Shop'}}">Shop</a>
+                    <i class="right chevron icon divider"></i>
+                    <div class="active section">Shopping Cart</div>
+                </div>
 
-    <table class="ui selectable large table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Item</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Add / Remove</th>
-        </tr>
-        </thead>
-        <tbody>
-          {{#each shoppingCart }}
-              {{> ShoppingCartItem }}
-          {{/each}}
-        </tbody>
-        <tfoot>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>{{cartItemQuantity}} Items</th>
-                <th><strong>Subtotal :</strong> ${{subtotal}}</th>
-                <th></th>
-            </tr>
-        </tfoot>
-    </table>
+                <table class="ui selectable large table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Add / Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each shoppingCart }}
+                        {{> ShoppingCartItem }}
+                    {{/each}}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>{{cartItemQuantity}} Items</th>
+                        <th><strong>Subtotal :</strong> ${{subtotal}}</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+
+                <button class="ui button" id="customButton">
+                    Checkout
+                </button>
+
+                <i class="american express icon"></i>
+                <i class="discover icon"></i>
+                <i class="mastercard icon"></i>
+                <i class="visa icon"></i>
+            </div>
+            <div class="one wide column"></div>
+        </div>
+    </div>
 
 </template>

@@ -1,3 +1,57 @@
 <template name="Contact">
-    <p>Contact page ready...</p>
+
+    <!-- basic modal for submit event -->
+    <div class="ui basic modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Email sent
+        </div>
+        <div class="image content">
+            <div class="image">
+                <i class="mail outline icon"></i>
+            </div>
+            <div class="description">
+                <p>Thank you for contacting us!<br><br>
+                    Your participation helps our business to thrive. We will follow up with your request as soon as possible</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="two fluid ui inverted buttons">
+                <div class="ui ok green basic inverted button">
+                    <i class="thumbs outline up icon"></i>
+                    OK
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact form -->
+    <div class="ui grid">
+        <div class="row">
+            <div class="one wide column"></div>
+            <div class="fourteen wide column">
+                <div class="ui form" name="myForm" id="myForm">
+                    <div class="field">
+                        <label>Subject: </label>
+                        <input name="subject" placeholder="Subject" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Phone: </label>
+                        <input name="phone" placeholder="Phone Number" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Email: </label>
+                        <input name="email" placeholder="Email" type="text">
+                    </div>
+                    <div class="field">
+                        <label>Message: </label>
+                        <textarea name="message" placeholder="What is your reason for inquiry?"></textarea>
+                    </div>
+                    <div class="ui submit button" id="submit" type="submit">Submit</div>
+                </div>
+            </div>
+            <div class="fourteen wide column"></div>
+        </div>
+
+    </div>
 </template>
