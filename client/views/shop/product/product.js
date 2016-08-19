@@ -1,6 +1,6 @@
-Session.setDefault('parentCategoryId',0);
-Session.setDefault('_slider', [0,2400]);
-Session.setDefault('_sliderBounds', [0, 2400]);
+Session.setDefault('parentCategoryId',-1);
+Session.setDefault('_slider', [18,2000]);
+Session.setDefault('_sliderBounds', [18, 2000]);
 sliderRenderShopCount = 0;
 
 // default assigned to main category filter
@@ -10,19 +10,8 @@ Session.setDefault('filterUsed',1);
 
 reLoadSlider = function () {
 
-    /*
-    console.log('enter reLoadSlider');
-    console.log('[Router.current().lowerBound1(),Router.current().upperBound1()] '+[Router.current().lowerBound1(),Router.current().upperBound1()]);
-    console.log('[Router.current().lowerBound2(),Router.current().upperBound2()] '+[Router.current().lowerBound2(),Router.current().upperBound2()]);
-    */
-
     Session.set('_slider', [Router.current().lowerBound1(),Router.current().upperBound1()]);
     Session.set('_sliderBounds', [Router.current().lowerBound2(),Router.current().upperBound2()]);
-
-    /*
-    console.log("Session.get('_slider') "+Session.get('_slider'));
-    console.log("Session.get('_sliderBounds "+Session.get('_sliderBounds'))
-    */
 
     this.$('.ui.dropdown').dropdown({
         allowCategorySelection: true
@@ -45,6 +34,7 @@ Template.Products.onRendered(function () {
     sliderRenderShopCount++;
     // console.log('sliderRenderShopCount :'+sliderRenderShopCount);
 });
+
 
 Template.Products.events({
     "slide #slider1": function (values, handle, unencoded, tap) {
@@ -89,6 +79,7 @@ Template.Products.events({
 
 });
 
+
 Template.twoHandleSliders.helpers({
     sliderFunc1: function () {
 
@@ -104,8 +95,3 @@ Template.twoHandleSliders.helpers({
     }
 });
 
-/*
-Template.subCategories.helpers({
-    subcategories: function () { return subcategoriesFunc(); }
-});
-*/

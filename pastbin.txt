@@ -1,89 +1,12 @@
-HTTP.get('https://www.tghairtoppers.com/wc-api/v3/products/categories?consumer_key=ck_746d444c14ff742fad344574f02c5bb47ff3fd87&consumer_secret=cs_bcf81e1a4b9c66afd3ea4388536bcef7631775b9',
-                {
-                    "timeout": 10 * 1000,
-                    "followRedirects": false,
-                    "maxRedirects": 2
-                },
-                function (error, result) {
-                    if (!error) {
+Grip Wig Liner
 
-                        // log category data
-                        // console.log("HTTP response: " + Object.keys(result.data.product_categories[0]));
-                        // console.log("HTTP response: " + Object.keys(result.data.products[0].images[0]))
+Secures your wig securely without glues, 
+tapes, clips or combs.
 
-                        _categories = result.data.product_categories;
-                        _dataDependencyCat.changed();
+Our soft wicking grip fabric is hand sewn 
+into the top front and or the back nape of the wig cap liner.
 
-                        // clear collection
-                        Categories.remove({});
+GripSewn
 
-                        for (var i = 0; i < categories().length; i++) {
-                            Categories.insert(categories()[i]);
-                        }
-
-                    } else {
-                        console.log(error)
-                    }
-                });
---------------------------------------------------------
-
-db.products.find({}).forEach(function (x) { return db.products.update({id: x.id},{ $set: {"price": parseInt(x.price)} }) })
-
----------------------
-
-   // couldn't get methods to execute in onRender
-
-    getPriceMin: function () {
-        // convert price field from string to number
-        Products.find({}).forEach(function (x) {
-            return Products.update({id: x.id},{ $set: {"price": parseInt(x.price)} });
-        });
-
-        // get min / max for the product set
-        var min = Products.find({},{sort: {price: 1}}).fetch()[0].price;
-
-        console.log(typeof min);
-        console.log("min: " + min)
-
-        return min;
-
-    },
-    getPriceMax: function () {
-        // convert price field from string to number
-        Products.find({}).forEach(function (x) {
-            return Products.update({id: x.id},{ $set: {"price": parseInt(x.price)} });
-        });
-
-        // get min / max for the product set
-        var max = Products.find({},{sort: {price: -1}}).fetch()[0].price;
-
-        console.log(typeof max);
-        console.log("max: " + max);
-
-        return max;
-    }
-----------------------------------------------------------------------
-
-getPriceMinMax: function () {
-
-        var xs = [];
-
-        // convert price field from string to number
-        Products.find({}).forEach(function (x) {
-            return Products.update({_id: x._id},{ $set: {"price": parseInt(x.price)} });
-        });
-
-        // get min price
-        var min = Products.find({},{sort: {price: 1}}).fetch()[0].price;
-
-        // get max price
-        var max = Products.find({},{sort: {price: -1}}).fetch()[0].price;
-
-        xs.push(min);
-        xs.push(max);
-
-        console.log(xs);
-
-        return xs;
-
-    }
+ck_2ddb7e35a335f20f07308094b65736df598ace68 
+cs_577e947d718db084129aca0abca3acc0f8ba29ff
