@@ -1,35 +1,36 @@
 <template name="ProductItem">
-        <div class="item ui attached segment">
-            <div class="image">
-                <img src="{{ images.[0].src }}" alt="NO IMAGE AVAILABLE">
+
+    <div class="item ui attached segment">
+        <div class="image">
+            <img src="{{ images.[0].src }}" alt="NO IMAGE AVAILABLE">
+        </div>
+        <div class="content">
+            <div class="header">{{ title }}</div>
+
+            <div class="meta">
+                <span class="price">${{ price }}</span>
             </div>
-            <div class="content">
-                <div class="header">{{ title }}</div>
 
-                <div class="meta">
-                    <span class="price">${{ price }}</span>
-                </div>
-
-                <div class="description">
-                    {{{ short_description }}}
-                </div>
+            <div class="description">
+                {{{ short_description }}}
             </div>
         </div>
+    </div>
 
-        <a href="{{ pathFor 'ProductPage' _id=this._id}}">
-            <div id="viewProduct" class="ui bottom attached button" tabindex="0">
-                View Product
-            </div>
-        </a>
+    <a href="{{ pathFor 'ProductPage' id=this.id}}">
+        <div id="viewProduct" class="ui bottom attached button" tabindex="0">
+            View Product
+        </div>
+    </a>
 
-        <br>
-            <div id="addToCartShop" class="ui bottom attached button" tabindex="0">Add to Cart</div>
-        <br>
+    <br>
+    <div id="addToCartShop" class="ui bottom attached button" tabindex="0">Add to Cart</div>
+    <br>
 
-        {{#if showNotifShop}}
-            {{#with showProduct }}
-                {{> addToCart }}
-            {{/with}}
-        {{/if}}
+    {{#if showNotifShop}}
+        {{#with showProduct }}
+            {{> addToCart }}
+        {{/with}}
+    {{/if}}
 
 </template>

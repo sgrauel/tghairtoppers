@@ -2,17 +2,26 @@ Session.setDefault('total',0.0);
 handler = {};
 
 Template.ShoppingCart.onRendered(function() {
+
+    // vertically flip table
+    $('.ui.selectable.large.table').transition('hide');
+    $('.ui.selectable.large.table').transition('vertical flip');
+
     handler =  StripeCheckout.configure({
         key: 'pk_test_3oPENdHQ65sigMm5Hpp47Rkh',
         image: 'https://s3.amazonaws.com/stripe-uploads/acct_18hIJbEtRwJmPSv0merchant-icon-1470919150448-TG_black_on_white.jpg',
         locale: 'auto',
-        bitcoin: true
+        bitcoin: true,
+        billingAddress: true
     });
 });
 
 
 Template.ShoppingCart.events({
     'click #customButton': function(e) {
+
+        // give user reinforcement for checking out
+        $('.ui.button').transition('tada');
 
         // Open Checkout with further options:
         handler.open({

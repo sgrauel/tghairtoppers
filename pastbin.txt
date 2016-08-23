@@ -10,3 +10,12 @@ GripSewn
 
 ck_2ddb7e35a335f20f07308094b65736df598ace68 
 cs_577e947d718db084129aca0abca3acc0f8ba29ff
+
+
+
+curl -s --user 'api:key-78934a49109dcf22ebe5dfd77275ab9c' \
+    https://api.mailgun.net/v3/sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org/messages \
+    -F from='Mailgun Sandbox <postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org>' \
+    -F to='Shawn <shawn.m.grauel@gmail.com>' \
+    -F subject='Hello Shawn' \
+    -F text='Congratulations Shawn, you just sent an email with Mailgun!  You are truly awesome!' 

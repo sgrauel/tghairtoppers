@@ -1,6 +1,14 @@
 Stripe = StripeAPI('sk_test_28pvn0BRfYU4RKc7wTU1Qt02');
 
 Meteor.methods({
+    /*
+    TASK: charges customer credit card
+    INPUT:
+      i. subtotal of charges in dollars from the shopping cart
+      ii. stripe token id
+      iii. customer email
+    OUTPUT: create a charge object at Stripe API endpoint
+     */
     chargeCard: function(amt, stripeTokenId, email) {
 
         const amtCents = amt * 100;

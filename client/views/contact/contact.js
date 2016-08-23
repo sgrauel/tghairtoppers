@@ -1,10 +1,9 @@
 resetForm = function($form) {
     $form.find('input:text, input:password, input:file, select, textarea').val('');
-    $form.find('input:radio, input:checkbox')
-        .removeAttr('checked').removeAttr('selected');
+    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
 };
 
-myForm = $('#myForm');
+var myForm = {};
 
 Template.Contact.events({
     'click #submit': function (event) {
@@ -12,13 +11,16 @@ Template.Contact.events({
         // prevent form from submitting (along with event func. returning false)
         event.preventDefault();
 
-        // grap data from input fields
+        // grab data from input fields
         const contactForm = {
             subject: myForm.find('[name=subject]').val(),
             phone: myForm.find('[name=phone]').val(),
             email: myForm.find('[name=email]').val(),
             mainBody: myForm.find('[name=message ]').val()
         };
+
+
+        console.log(contactForm);
 
         // call getContact method to insert Contact object into Contacts collection
         Meteor.call('getContact',contactForm,function(err) {
@@ -30,6 +32,10 @@ Template.Contact.events({
             }
         });
 
+
+        // user reinforcement for hitting submit
+        $('.ui.submit.button').transition('tada');
+
         // show the modal on submit click event
         $('.ui.basic.modal').modal('show');
 
@@ -38,4 +44,12 @@ Template.Contact.events({
 
         return false;
     }
+});
+
+Template.Contact.onRendered(function() {
+    myForm = $('#myForm');
+
+    $('.ui.form').transition('hide');
+    $('.ui.form').transition('horizontal flip');
+
 });

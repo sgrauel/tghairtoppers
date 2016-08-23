@@ -1,7 +1,6 @@
 Session.setDefault('parentCategoryId',-1);
 Session.setDefault('_slider', [18,2000]);
 Session.setDefault('_sliderBounds', [18, 2000]);
-sliderRenderShopCount = 0;
 
 // default assigned to main category filter
 // price filter = 1
@@ -29,10 +28,7 @@ reLoadSlider = function () {
 };
 
 Template.Products.onRendered(function () {
-    // console.log('onRendered in Products called!');
     reLoadSlider();
-    sliderRenderShopCount++;
-    // console.log('sliderRenderShopCount :'+sliderRenderShopCount);
 });
 
 
@@ -82,8 +78,6 @@ Template.Products.events({
 
 Template.twoHandleSliders.helpers({
     sliderFunc1: function () {
-
-        console.log('filterUsed :'+Session.get('filterUsed'));
 
         if (Session.get('filterUsed') == 1) {
             // transition from one set of price handle values to another

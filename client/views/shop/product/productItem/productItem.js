@@ -3,15 +3,14 @@ Session.setDefault('productId',-1);
 
 Template.ProductItem.events({
     "click #addToCartShop": function () {
+
         Session.set('showNotifShop',true);
-        Session.set('productId',this._id);
-
-
+        Session.set('productId',this.id);
 
         // NOTE: minor optimisation; find returns cursor and does not
         // read and return the whole collection like findOne
 
-        var product = Products.findOne(this._id);
+        let product = Products.findOne({id: this.id});
 
         // add properties for the following features
         /*
@@ -21,10 +20,11 @@ Template.ProductItem.events({
         product.isAdded = true;
         product.quantity = 1;
 
-        if (ShoppingCart.find(this._id,{limit: 1}).count() == 0) {
-            console.log(product);
-            ShoppingCart.insert(product);
-        }
+        // upsert ; if document dne, insert else update nothing
+        ShoppingCart.update({id: this.id},
+                {$setOnInsert: product},
+                {upsert: true, multi: false});
+
 
     },
     "click #closeNotif": function () {
@@ -37,6 +37,9 @@ Template.ProductItem.helpers({
         return Session.get('showNotifShop');
     },
     showProduct: function () {
-        return Products.findOne(Session.get('productId'));
+        return Products.findOne({id: Session.get('productId')});
     }
 });
+
+
+
