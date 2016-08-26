@@ -1,5 +1,11 @@
 Session.setDefault('total',0.0);
+Session.setDefault('isShowStripeProcessNotif',false);
 handler = {};
+
+hideLowerNotif = function(){
+    $('.ui.positive.message').transition('hide');
+};
+
 
 Template.ShoppingCart.onRendered(function() {
 
@@ -30,6 +36,14 @@ Template.ShoppingCart.events({
             amount: (Session.get('total') * 100),
             token: function(token) {
 
+                // show a message on successful processing of request for 3s, then hide
+                // animation for lower notification
+                $('.ui.positive.message').transition('hide');
+                $('.ui.positive.message').transition('fade');
+                setTimeout(hideLowerNotif,3000);
+
+                Session.set('isShowStripeProcessNotif',true);
+
                 // create a new customer or do nothing if returning customer
 
                 // create an order with shopping cart items
@@ -50,6 +64,9 @@ Template.ShoppingCart.events({
         });
 
         e.preventDefault();
+    },
+    "click #closeStripeProcessNotif": function () {
+        Session.set('isShowStripeProcessNotif',false);
     }
 });
 
@@ -81,5 +98,8 @@ Template.ShoppingCart.helpers({
         const zs = ys.map(obj => obj.price * obj.quantity);
         Session.set('total',zs.reduce((x,y) => x + y,0));
         return zs.reduce((x,y) => x + y,0);
+    },
+    isShowStripeProcessNotif: function () {
+        return Session.get('isShowStripeProcessNotif');
     }
 });

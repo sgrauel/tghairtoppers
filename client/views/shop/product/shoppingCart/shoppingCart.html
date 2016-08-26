@@ -49,9 +49,22 @@
                 <i class="discover icon"></i>
                 <i class="mastercard icon"></i>
                 <i class="visa icon"></i>
+
+                {{#if isShowStripeProcessNotif}}
+                    <div class="ui positive message" style="width: 50%;">
+                        <div class="header">
+                            Payment successful!
+                        </div>
+                        <p>Thank you for doing business with us.</p>
+                    </div>
+                {{/if}}
             </div>
             <div class="one wide column"></div>
         </div>
     </div>
+
+    {{#if isShowStripeProcessNotif}}
+        {{> stripeProcessNotif }}
+    {{/if}}
 
 </template>
