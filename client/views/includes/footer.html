@@ -1,0 +1,50 @@
+<template name="footer">
+    <br>
+    <span>
+
+        <a id="viewShippingPolicy" href="">Shipping and Return Policy</a>
+        &middot;
+        <a id="viewPrivacyPolicy" href="">Privacy Policy</a>
+        &middot;
+        <a id="viewTermsOfUse" href="">Terms of Use</a>
+        &middot;
+        <a href="">Sitemap</a>
+        &middot;
+        <strong>&copy; TG Hair Toppers Inc.</strong>
+    </span>
+
+    <div id="genericModal" class="ui fullscreen modal">
+
+        {{#if equals 1 }}
+            <div class="header">Shipping and Return Policy</div>
+
+            <div class="content">
+                {{> shippingAndReturnPolicy }}
+            </div>
+        {{/if}}
+
+        {{#if equals 2 }}
+            <div class="header">Privacy Policy</div>
+
+            <div class="content">
+                {{> privacyPolicy }}
+            </div>
+        {{/if}}
+
+        {{#if equals 3 }}
+            <div class="header">Terms of Use</div>
+
+            <div class="content">
+                {{> termsOfUse }}
+            </div>
+        {{/if}}
+
+
+        <div class="actions">
+            <div id="genericModalButton" class="ui button">OK</div>
+        </div>
+    </div>
+
+
+
+</template>

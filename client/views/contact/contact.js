@@ -47,8 +47,14 @@ Template.Contact.events({
 });
 
 Template.Contact.onRendered(function() {
+
+    // flip ui piled segment
+    $('.ui.piled.segment').transition('hide');
+    $('.ui.piled.segment').transition('horizontal flip');
+
     myForm = $('#myForm');
 
+    // flip ui form
     $('.ui.form').transition('hide');
     $('.ui.form').transition('horizontal flip');
 
