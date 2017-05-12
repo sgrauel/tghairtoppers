@@ -19,3 +19,29 @@ curl -s --user 'api:key-78934a49109dcf22ebe5dfd77275ab9c' \
     -F to='Shawn <shawn.m.grauel@gmail.com>' \
     -F subject='Hello Shawn' \
     -F text='Congratulations Shawn, you just sent an email with Mailgun!  You are truly awesome!' 
+
+
+---------------------------
+
+Accounts.onCreateUser(function () {
+
+                    const userId = Meteor.userId();
+                    const userIdStr = userId.toString();
+
+                    if (userId) {
+                        /*
+                        console.log(userId);
+                        console.log("verification email sent");
+                        Accounts.sendVerificationEmail(userId);
+                        */
+
+                        Email.send({
+                            to: "shawn.m.grauel@gmail.com",
+                            from: "postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
+                            subject: "It works!",
+                            text: userIdStr
+                        });
+
+                    }
+
+                });

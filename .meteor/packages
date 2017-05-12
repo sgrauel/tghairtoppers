@@ -27,5 +27,5 @@ mrgalaxy:stripe
 standard-minifier-css
 standard-minifier-js
 email
+accounts-password
 iandouglas:accounts-ui-semantic-ui
-accounts-facebook
