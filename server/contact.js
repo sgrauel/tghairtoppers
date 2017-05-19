@@ -10,8 +10,8 @@ Meteor.methods({
             Email.send({
                 to: "shawn.m.grauel@gmail.com",
                 from: "postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
-                subject: contactForm.subject,
-                text: (contactForm.mainBody + "\n\n" + contactForm.email + "\n" + contactForm.phone)
+                subject: (contactForm.first_name + ' ' + contactForm.last_name),
+                text: (contactForm.mainBody + "\n\n" + contactForm.phone)
             });
 
             Contacts.insert(contactForm);
