@@ -49,6 +49,7 @@ Template.Contact.onRendered(function() {
     $('.ui.piled.segment').transition('horizontal flip');
 
     myForm = $('#myForm');
+
     myForm.form({
         inline: false,
         fields: {
