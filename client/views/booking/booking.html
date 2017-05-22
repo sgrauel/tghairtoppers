@@ -1,3 +1,46 @@
 <template name="Booking">
-    <p>appointment book</p>
+
+
+
+    <div class="center aligned ui grid">
+        <div class="row">
+            <div class="column">
+                <h1 class="ui header">Availability for Booking a Consultation</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui center aligned segment">
+        <div class="row">
+            <div class="ui basic buttons">
+                <div class="ui button" id="dayCal">Daily</div>
+                <div class="ui button" id="weekCal">Weekly</div>
+                <div class="ui button" id="monthCal">Monthly</div>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- daily, weekly or monthly calendar -->
+        <div class="row">
+            {{#if isDayCal }}
+                <iframe src="https://calendar.zoho.com/embed/4e703ab42540d3739c15795b405e569fef545e965eefbc8b936d52e753d7f9eb4d6ab9d8c14d57b13c5c7887003dca00?title=Wig Care Consultation Availability&type=1&l=en&tz=US/Eastern&sh=[0,1,0]&v=0" width="600" height="500" frameborder="0" scrolling="no">
+                </iframe>
+            {{/if}}
+
+            <!-- weekly calendar -->
+            {{#if isWeekCal }}
+                <iframe src="https://calendar.zoho.com/embed/4e703ab42540d3739c15795b405e569fef545e965eefbc8b936d52e753d7f9eb4d6ab9d8c14d57b13c5c7887003dca00?title=Wig Care Consultation Availability&type=1&l=en&tz=US/Eastern&sh=[0,1,0]&v=1" width="600" height="500" frameborder="0" scrolling="no">
+                </iframe>
+            {{/if}}
+
+            <!-- monthly calendar -->
+            {{#if isMonthCal }}
+                <iframe src="https://calendar.zoho.com/embed/4e703ab42540d3739c15795b405e569fef545e965eefbc8b936d52e753d7f9eb4d6ab9d8c14d57b13c5c7887003dca00?title=Wig Care Consultation Availability&type=1&l=en&tz=US/Eastern&sh=[0,1,0]&v=2" width="600" height="500" frameborder="0" scrolling="no">
+                </iframe>
+            {{/if}}
+        </div>
+    </div>
+
+
 </template>

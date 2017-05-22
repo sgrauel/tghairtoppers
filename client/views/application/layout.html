@@ -51,10 +51,17 @@
         <div class="row">
             <div class="six wide column">
                 <br>
-                <a class="massive ui basic button" href="{{pathFor 'Shop'}}">
-                    <i class="eye icon"></i>
-                    View Wig Care Services
-                </a>
+                {{#if isNotServicesPage}}
+                    <a id="viewWigCareServices" class="huge ui basic button" href="{{pathFor 'Shop'}}">
+                        <i class="eye icon"></i>
+                        View Wig Care Services
+                    </a>
+                {{else}}
+                    <a class="huge ui basic button" href="">
+                        <i class="eye icon"></i>
+                        View Wig Repair Services
+                    </a>
+                {{/if}}
             </div>
             <div class="four wide column">
                 {{> footer }}
@@ -63,7 +70,7 @@
                 <br>
 
                 {{#if isNotContactPage }}
-                <a href="{{pathFor 'Contact'}}" class="massive ui basic button">
+                <a href="{{pathFor 'Contact'}}" class="huge ui basic button">
                     <i class="mail outline icon"></i>
                     Contact us
                 </a>
