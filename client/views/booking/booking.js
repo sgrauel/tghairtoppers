@@ -32,4 +32,5 @@ Template.Booking.helpers({
 
 Template.Booking.onRendered(function(){
     Session.setDefault("calendarView",1);
+    this.$('.datetimepicker').datetimepicker();
 });

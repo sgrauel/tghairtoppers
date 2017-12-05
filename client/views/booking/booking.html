@@ -13,9 +13,26 @@
     <div class="ui center aligned segment">
         <div class="row">
             <div class="ui basic buttons">
-                <div class="ui button" id="dayCal">Daily</div>
-                <div class="ui button" id="weekCal">Weekly</div>
-                <div class="ui button" id="monthCal">Monthly</div>
+
+                {{#if isDayCal }}
+                    <div class="ui button active" id="dayCal">Daily</div>
+                {{else}}
+                    <div class="ui button" id="dayCal">Daily</div>
+                {{/if}}
+
+
+                {{#if isWeekCal }}
+                    <div class="ui button active" id="weekCal">Weekly</div>
+                {{else}}
+                    <div class="ui button" id="weekCal">Weekly</div>
+                {{/if}}
+
+                {{#if isMonthCal }}
+                    <div class="ui button active" id="monthCal">Monthly</div>
+                {{else}}
+                    <div class="ui button" id="monthCal">Monthly</div>
+                 {{/if}}
+
             </div>
         </div>
 
@@ -40,6 +57,11 @@
                 </iframe>
             {{/if}}
         </div>
+    </div>
+
+    <div class="row">
+        <iframe frameborder="0" style="height:500px;width:99%;border:none;" src='https://forms.zohopublic.com/terrigrauel/form/RequestConsultation/formperma/je8K59jd4E144CCb2jbaM6E2_'>
+        </iframe>
     </div>
 
 
