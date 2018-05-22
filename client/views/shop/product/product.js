@@ -1,6 +1,6 @@
 Session.setDefault('parentCategoryId',-1);
-Session.setDefault('_slider', [18,2000]);
-Session.setDefault('_sliderBounds', [18, 2000]);
+Session.setDefault('_slider', [15,700]);
+Session.setDefault('_sliderBounds', [15, 700]);
 
 // default assigned to main category filter
 // price filter = 1
@@ -88,4 +88,3 @@ Template.twoHandleSliders.helpers({
 
     }
 });
-

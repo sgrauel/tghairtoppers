@@ -3,17 +3,18 @@ Template.searchSelectionDropdown.events({
 
         // parse categoryId from dropdown
         const categoryId = parseInt($('#searchSelectionDropdown').val());
-
         Session.set('parentCategoryId',categoryId);
 
         Meteor.call('getPriceMinMax',Session.get('parentCategoryId'), function (error,result) {
             if (!error) {
 
+                console.log(result);
                 // reset price sorting mechanism to highest to lowest
                 Session.set('isHighestToLowest',1);
 
                 // set new path
                 var curCtrl = Router.current();
+
                 var newPath = curCtrl.route.path({productsLimit: 5,
                     catId: categoryId, lb1: result[0],
                     ub1: result[1], lb2: result[0], ub2: result[1], sortNum: 1 });
