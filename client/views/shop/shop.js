@@ -1,4 +1,4 @@
-Session.setDefault("_isViewProduct",false);
+Session.setDefault("_isViewProduct",true);
 Session.setDefault("productModalSeen",false);
 
 Template.Shop.events({

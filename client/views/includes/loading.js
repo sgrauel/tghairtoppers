@@ -105,7 +105,7 @@ Template.loading.rendered = function () {
     if ( ! Session.get('loadingSplash') ) {
         this.loading = window.pleaseWait({
             logo: '/img/logo/logoTG_black_on_transparent300x300.png',
-            backgroundColor: '#0000',
+            backgroundColor: '#FFFFFF',
             loadingHtml: message + spinner
         });
         Session.set('loadingSplash', false); // just show loading splash once

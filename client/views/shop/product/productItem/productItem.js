@@ -38,8 +38,12 @@ Template.ProductItem.helpers({
     },
     showProduct: function () {
         return Products.findOne({id: Session.get('productId')});
+    },
+    findImage: function () {
+      const urlSource = Products.findOne({id: this.id}).images[0].src;
+      const urlList = urlSource.split('/');
+      const uri = urlList[urlList.length - 1];
+      const imagePath = '/img/' + uri;
+      return imagePath;
     }
 });
-
-
-

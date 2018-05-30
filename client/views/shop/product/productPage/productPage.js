@@ -33,5 +33,12 @@ Template.ProductPage.helpers({
     },
     showProduct: function () {
         return Products.findOne({id: Session.get('prodId')});
+    },
+    findImagePaths: function () {
+      const urlSourceList = Products.findOne({id: this.id}).images;
+      const urlSourceListXs = urlSourceList.map(img => img.src.split('/'));
+      const uriList = urlSourceListXs.map(xs => xs[xs.length - 1]);
+      const imagePathList = uriList.map(uri => '/img/' + uri);
+      return imagePathList;
     }
 });
