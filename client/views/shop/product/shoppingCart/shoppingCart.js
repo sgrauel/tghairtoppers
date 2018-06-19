@@ -17,7 +17,7 @@ Template.ShoppingCart.onRendered(function() {
         key: 'pk_test_3oPENdHQ65sigMm5Hpp47Rkh',
         image: 'https://s3.amazonaws.com/stripe-uploads/acct_18hIJbEtRwJmPSv0merchant-icon-1470919150448-TG_black_on_white.jpg',
         locale: 'auto',
-        bitcoin: true,
+        bitcoin: false,
         billingAddress: true
     });
 });
@@ -36,19 +36,60 @@ Template.ShoppingCart.events({
             amount: (Session.get('total') * 100),
             token: function(token) {
 
+                console.log(token);
                 // show a message on successful processing of request for 3s, then hide
                 // animation for lower notification
-                $('.ui.positive.message').transition('hide');
-                $('.ui.positive.message').transition('fade');
-                setTimeout(hideLowerNotif,3000);
+                // $('.ui.positive.message').transition('hide');
+                // $('.ui.positive.message').transition('fade');
+                // setTimeout(hideLowerNotif,3000);
 
-                Session.set('isShowStripeProcessNotif',true);
+                // Session.set('isShowStripeProcessNotif',true);
 
                 // create a new customer or do nothing if returning customer
+                // create a new order using Stripe order's API
+                class SKU {
+                  constructor(id,quantity) {
+                    this.type = 'sku';
+                    this.parent = id.toString();
+                    this.quantity = quantity;
+                  }
+                }
 
-                // create an order with shopping cart items
+                let shoppingCartXs = ShoppingCart.find({}).fetch();
+                shoppingCartXs = shoppingCartXs.filter(item => item.isAdded);
+                shoppingCartXs = shoppingCartXs.map(item => new SKU(item.id, item.quantity));
 
-                // charge the customer for the order using their payment token
+
+                const config = {
+                   currency: 'usd',
+                   email: token.email,
+                   items: shoppingCartXs,
+                   shipping: {
+                     name: token.card.name,
+                     address: {
+                       line1: token.card.address_line1,
+                       city: token.card.address_city,
+                       state: token.card.address_state,
+                       postal_code: token.card.address_zip,
+                       country: token.card.address_country,
+                     },
+                   },
+                 }
+
+                 console.log(config);
+
+                Meteor.call('createOrder', config, function (error,result) {
+                  if (error) {
+                    console.log(error.message);
+                  } else {
+                    console.log('createOrder has been invoked!')
+                    console.log(result);
+                  }
+                });
+
+                // (i) charge the customer for the order using their payment token
+                // creates a Charge object
+                /*
                 Meteor.call('chargeCard', Session.get('total'), token.id, token.email, function (error) {
                     if (error) {
                         console.log(error.message);
@@ -59,6 +100,7 @@ Template.ShoppingCart.events({
                         console.log(Session.get('total'));
                     }
                 });
+                */
 
             }
         });
