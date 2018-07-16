@@ -25,9 +25,13 @@
         </div>
     </a>
 
-    <br>
-    <div id="addToCartShop" class="ui bottom attached button" tabindex="0">Add to Cart</div>
-    <br>
+    {{#if hideAddToCart }}
+      <br>
+      <div id="addToCartShop" class="ui bottom attached button" tabindex="0">Add to Cart</div>
+      <br>
+    {{else}}
+     <br>
+    {{/if}}
 
     {{#if showNotifShop}}
         {{#with showProduct }}

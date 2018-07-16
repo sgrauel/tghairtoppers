@@ -69,3 +69,20 @@ Accounts.onCreateUser(function () {
 
             // check if input satisfies length requirements
             //check(contactForm,inputLenthCond);
+-----------------------------------------------------------------------------
+
+{{#if isSelected}}
+  <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="{{id}}" checked="checked">
+        <label>{{description}} : ${{amount}} : {{isSelected}}</label>
+      </div>
+   </div>
+{{else}}
+  <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="{{id}}">
+        <label>{{description}} : ${{amount}} : {{isSelected}}</label>
+      </div>
+   </div>
+{{/if}}

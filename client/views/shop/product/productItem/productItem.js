@@ -1,5 +1,6 @@
 Session.setDefault('showNotifShop',false);
 Session.setDefault('productId',-1);
+Session.setDefault('hideAddToCart',true);
 
 Template.ProductItem.events({
     "click #addToCartShop": function () {
@@ -45,5 +46,12 @@ Template.ProductItem.helpers({
       const uri = urlList[urlList.length - 1];
       const imagePath = '/img/' + uri;
       return imagePath;
+    },
+    hideAddToCart: function () {
+      if (!(this.id == 4232 || this.id == 6424)) {
+        return true;
+      } else {
+        return false;
+      }
     }
 });

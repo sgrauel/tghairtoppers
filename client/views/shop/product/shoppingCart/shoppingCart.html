@@ -40,6 +40,17 @@
                     </tfoot>
                 </table>
 
+                {{> ShippingAddress}}
+
+                <hr>
+
+                <div class="ui form">
+                  <div class="grouped fields">
+                {{#each printShippingMethods}}
+                    {{> ShippingMethod}}
+                {{/each}}
+                  </div>
+                </div>
 
                 <button class="ui button" id="customButton">
                     Checkout

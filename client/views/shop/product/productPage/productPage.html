@@ -33,9 +33,11 @@
 
                 {{{ description }}}
 
+                {{#if hideAddToCart}}
                 <div id="addToCart" class="ui bottom attached button">
                     Add to Cart
                 </div>
+                {{/if}}
 
                 <a href="{{pathFor 'ShoppingCart'}}">
                     <div class="ui bottom attached button">

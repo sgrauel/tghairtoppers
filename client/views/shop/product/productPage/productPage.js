@@ -40,5 +40,12 @@ Template.ProductPage.helpers({
       const uriList = urlSourceListXs.map(xs => xs[xs.length - 1]);
       const imagePathList = uriList.map(uri => '/img/' + uri);
       return imagePathList;
+    },
+    hideAddToCart: function () {
+      if (!(this.id == 4232 || this.id == 6424)) {
+        return true;
+      } else {
+        return false;
+      }
     }
 });

@@ -1,5 +1,6 @@
 Session.setDefault('total',0.0);
 Session.setDefault('isShowStripeProcessNotif',false);
+Session.setDefault('order',{});
 handler = {};
 
 hideLowerNotif = function(){
@@ -17,8 +18,11 @@ Template.ShoppingCart.onRendered(function() {
         key: 'pk_test_3oPENdHQ65sigMm5Hpp47Rkh',
         image: 'https://s3.amazonaws.com/stripe-uploads/acct_18hIJbEtRwJmPSv0merchant-icon-1470919150448-TG_black_on_white.jpg',
         locale: 'auto',
-        bitcoin: false,
-        billingAddress: true
+        bitcoin: false
+        /*,
+        billingAddress: true,
+        shippingAddress: true
+        */
     });
 });
 
@@ -34,9 +38,10 @@ Template.ShoppingCart.events({
             name: 'TG Hair Toppers',
             description: 'Go forward, faith will come to you',
             amount: (Session.get('total') * 100),
+            email: 'shawn.m.grauel@gmail.com',
             token: function(token) {
 
-                console.log(token);
+                // console.log(token);
                 // show a message on successful processing of request for 3s, then hide
                 // animation for lower notification
                 // $('.ui.positive.message').transition('hide');
@@ -47,6 +52,7 @@ Template.ShoppingCart.events({
 
                 // create a new customer or do nothing if returning customer
                 // create a new order using Stripe order's API
+                /*
                 class SKU {
                   constructor(id,quantity) {
                     this.type = 'sku';
@@ -86,6 +92,7 @@ Template.ShoppingCart.events({
                     console.log(result);
                   }
                 });
+                */
 
                 // (i) charge the customer for the order using their payment token
                 // creates a Charge object
@@ -101,7 +108,6 @@ Template.ShoppingCart.events({
                     }
                 });
                 */
-
             }
         });
 
@@ -143,5 +149,13 @@ Template.ShoppingCart.helpers({
     },
     isShowStripeProcessNotif: function () {
         return Session.get('isShowStripeProcessNotif');
+    },
+    printShippingMethods: function () {
+      let shipping_methods = Session.get('order').shipping_methods;
+      for (let i = 0; i < shipping_methods.length; i++) {
+        shipping_methods[i].amount = (shipping_methods[i].amount * 0.01).toFixed(2);
+      }
+      Session.set('shipping_methods',shipping_methods);
+      return Session.get('shipping_methods');
     }
 });

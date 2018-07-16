@@ -1,5 +1,7 @@
 Stripe = StripeAPI('sk_test_28pvn0BRfYU4RKc7wTU1Qt02');
 
+Result = {}
+
 Meteor.methods({
     /*
     TASK: charges customer credit card
@@ -30,10 +32,18 @@ Meteor.methods({
 
     },
     createOrder: function(config) {
-      const order = Stripe.orders.create(config, function(err) {
-        console.log('stripe failed to create an order for ' + config.email);
-        console.log(err);
+
+      const promise = Stripe.orders.create(config, function(err,result) {
+        if (!err) {
+          console.log(result);
+        } else {
+          console.log('stripe failed to create an order for ' + config.email);
+          console.log(err.message);
+        }
       });
-      return order;
+
+      console.log(promise);
+      return promise;
+
     }
 });
