@@ -1,4 +1,5 @@
 Session.setDefault('total',0.0);
+Session.setDefault('shipping_cost',0.0);
 Session.setDefault('isShowStripeProcessNotif',false);
 Session.setDefault('order',{});
 handler = {};
@@ -145,7 +146,8 @@ Template.ShoppingCart.helpers({
         const ys = xs.filter(obj => obj.isAdded);
         const zs = ys.map(obj => obj.price * obj.quantity);
         Session.set('total',zs.reduce((x,y) => x + y,0));
-        return zs.reduce((x,y) => x + y,0);
+        return Session.get('total');
+        //return zs.reduce((x,y) => x + y,0);
     },
     isShowStripeProcessNotif: function () {
         return Session.get('isShowStripeProcessNotif');
@@ -154,8 +156,15 @@ Template.ShoppingCart.helpers({
       let shipping_methods = Session.get('order').shipping_methods;
       for (let i = 0; i < shipping_methods.length; i++) {
         shipping_methods[i].amount = (shipping_methods[i].amount * 0.01).toFixed(2);
+        shipping_methods[i].id = i
       }
       Session.set('shipping_methods',shipping_methods);
       return Session.get('shipping_methods');
+    },
+    subtotalPlusST: function() {
+      // add taxes
+      let shipping_cost = parseFloat(Session.get('shipping_cost'));
+      let total = Session.get('total');
+      return (total + shipping_cost);
     }
 });
