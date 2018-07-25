@@ -1,6 +1,7 @@
 Session.setDefault('total',0.0);
 Session.setDefault('final_total',0.0);
 Session.setDefault('shipping_cost',0.0);
+Selected_shipping_method = '';
 Session.setDefault('isShowStripeProcessNotif',false);
 Session.setDefault('showSubtotalPlusST',false);
 Session.setDefault('order',{});
@@ -55,11 +56,16 @@ Template.ShoppingCart.events({
                 setTimeout(hideLowerNotif,3000);
                 Session.set('isShowStripeProcessNotif',true);
 
-              
+
                 // (i) charge the customer for the order using their payment token
                 // creates a Charge object
 
-                Meteor.call('chargeCard', Session.get('final_total'), token.id, function (error) {
+                const ids = {
+                  'order_id': Session.get('order').id,
+                  'selected_shipping_id': Session.get('shipping_methods')[Selected_shipping_method]._id
+                };
+
+                Meteor.call('chargeCard', Session.get('final_total'), token.id, ids, function (error) {
                     if (error) {
                         console.log(error.message);
                     } else {
@@ -116,6 +122,7 @@ Template.ShoppingCart.helpers({
       let shipping_methods = Session.get('order').shipping_methods;
       for (let i = 0; i < shipping_methods.length; i++) {
         shipping_methods[i].amount = (shipping_methods[i].amount * 0.01).toFixed(2);
+        shipping_methods[i]._id = shipping_methods[i].id;
         shipping_methods[i].id = i;
       }
       Session.set('shipping_methods',shipping_methods);

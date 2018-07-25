@@ -14,7 +14,7 @@ Meteor.methods({
       * stripeTokenId
       * email
      */
-    chargeCard: function(amt, stripeTokenId) {
+    chargeCard: function(amt, stripeTokenId,ids) {
 
         const amtCents = amt * 100;
 
@@ -34,9 +34,22 @@ Meteor.methods({
               "country": Config.shipping.address.country
             }
         }, function(err, charge) {
-            console.log("stripe failed to create a charge on " + stripeTokenId);
-            console.log(err);
-            console.log(charge);
+            if(!err){
+              Stripe.orders.update(ids.order_id,{
+                'selected_shipping_method': ids.selected_shipping_id
+              }, function(err) {
+                if (!err) {
+                  console.log('update succeeded!');
+                } else {
+                  console.log('update failed');
+                  console.log(err.message);
+                }
+              });
+            } {
+              console.log("stripe failed to create a charge on " + stripeTokenId);
+              console.log(err);
+              console.log(charge);
+            }
         });
 
     },
