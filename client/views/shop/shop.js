@@ -36,4 +36,5 @@ Template.Shop.helpers({
 Template.Shop.onRendered = function() {
     // make sidebar not overlay content
     $('.sidebar').sidebar('overlay',false);
+
 };

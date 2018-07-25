@@ -12,6 +12,7 @@ Template.ShippingMethod.events({
       $('#3').attr('checked',false);
 
       Session.set('shipping_cost',$('#0').val());
+      Session.set('showSubtotalPlusST',true);
     } else if (event.currentTarget.id == '1') {
 
       $('#0').attr('checked',false);
@@ -20,6 +21,7 @@ Template.ShippingMethod.events({
       $('#3').attr('checked',false);
 
       Session.set('shipping_cost',$('#1').val());
+      Session.set('showSubtotalPlusST',true);
     } else if (event.currentTarget.id == '2') {
 
       $('#0').attr('checked',false);
@@ -28,7 +30,9 @@ Template.ShippingMethod.events({
       $('#3').attr('checked',false);
 
       Session.set('shipping_cost',$('#2').val());
+      Session.set('showSubtotalPlusST',true);
     } else {
+
 
       $('#0').attr('checked',false);
       $('#1').attr('checked',false);
@@ -36,6 +40,7 @@ Template.ShippingMethod.events({
       $('#3').attr('checked',true);
 
       Session.set('shipping_cost',$('#3').val());
+      Session.set('showSubtotalPlusST',true);
     }
 
   }

@@ -2,6 +2,106 @@ let myShippingAddress = {};
 
 Template.ShippingAddress.onRendered(function() {
     myShippingAddress = $('#myShippingAddress');
+
+    myShippingAddress.form({
+        inline: false,
+        fields: {
+            email: {
+                identifier: 'email',
+                rules: [
+                  {
+                      type : 'empty',
+                      prompt : 'Email is required'
+                  },
+                  {
+                      type : 'email',
+                      prompt : 'Invalid email'
+                  }
+                ]
+            },
+            first_name: {
+                identifier: 'first_name',
+                rules: [
+                  {
+                      type : 'empty',
+                      prompt : 'First name is required'
+                  },
+                  {
+                      type : 'regExp[/^[A-Z][a-z]*$/]',
+                      prompt : 'Invalid first name. Did you capitalize your first name?'
+                  }
+                ]
+            },
+            last_name: {
+                identifier: 'last_name',
+                rules: [
+                  {
+                      type : 'empty',
+                      prompt : 'Last name is required'
+                  },
+                  {
+                      type : 'regExp[/^[A-Z][a-z]*$/]',
+                      prompt : 'Invalid last name. Did you capitalize your last name?'
+                  }
+                ]
+
+            },
+            address: {
+                identifier: 'address',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt : 'Address is required'
+                    }
+                ]
+
+            },
+            city: {
+                identifier: 'city',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt : 'City is required'
+                    }
+                ]
+
+            },
+            state: {
+                identifier: 'state',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt : 'State is required'
+                    }
+                ]
+
+            },
+            zip: {
+                identifier: 'zip',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt : 'Zipcode is required'
+                    },
+                    {
+                        type : 'regExp[/^[0-9]{5}$|^[0-9]{5}-[0-9]{4}$/]',
+                        prompt : 'Invalid zip code'
+                    }
+                ]
+
+            },
+            country: {
+                identifier: 'country',
+                rules: [
+                    {
+                        type : 'empty',
+                        prompt : 'Country is required'
+                    }
+                ]
+
+            }
+        }
+    });
 });
 
 
@@ -16,6 +116,7 @@ Template.ShippingAddress.events({
             email: myShippingAddress.find('[name=email]').val(),
             name: (myShippingAddress.find('[name=first_name]').val() + ' ' + myShippingAddress.find('[name=last_name]').val()),
             address_line1: myShippingAddress.find('[name=address]').val(),
+            address_line2: myShippingAddress.find('[name=address2]').val(),
             city: myShippingAddress.find('[name=city]').val(),
             state: myShippingAddress.find('[name=state]').val(),
             zip: myShippingAddress.find('[name=zip]').val(),
@@ -45,14 +146,17 @@ Template.ShippingAddress.events({
            shipping: {
              name: shippingContactForm.name,
              address: {
-               line1: shippingContactForm.address_line1  ,
+               line1: shippingContactForm.address_line1,
                city: shippingContactForm.city,
                state: shippingContactForm.state,
                postal_code: shippingContactForm.zip,
                country: shippingContactForm.country,
-             },
+             }
            },
-         }
+           metadata: {
+             'address_line2': shippingContactForm.address_line2
+           }
+         };
 
         // call getContact method to insert Contact object into Contacts collection and send email
         Meteor.call('createOrder',config,function(err,result) {

@@ -1,6 +1,8 @@
 Session.setDefault('total',0.0);
+Session.setDefault('final_total',0.0);
 Session.setDefault('shipping_cost',0.0);
 Session.setDefault('isShowStripeProcessNotif',false);
+Session.setDefault('showSubtotalPlusST',false);
 Session.setDefault('order',{});
 handler = {};
 
@@ -27,6 +29,9 @@ Template.ShoppingCart.onRendered(function() {
     });
 });
 
+Template.ShoppingCart.onDestroyed(function() {
+  Session.set('showSubtotalPlusST', false);
+});
 
 Template.ShoppingCart.events({
     'click #customButton': function(e) {
@@ -36,69 +41,25 @@ Template.ShoppingCart.events({
 
         // Open Checkout with further options:
         handler.open({
-            name: 'TG Hair Toppers',
+            name: 'T.G. Hair Toppers, Inc.',
             description: 'Go forward, faith will come to you',
-            amount: (Session.get('total') * 100),
+            amount: (Session.get('final_total') * 100),
             email: 'shawn.m.grauel@gmail.com',
             token: function(token) {
 
                 // console.log(token);
                 // show a message on successful processing of request for 3s, then hide
                 // animation for lower notification
-                // $('.ui.positive.message').transition('hide');
-                // $('.ui.positive.message').transition('fade');
-                // setTimeout(hideLowerNotif,3000);
+                $('.ui.positive.message').transition('hide');
+                $('.ui.positive.message').transition('fade');
+                setTimeout(hideLowerNotif,3000);
+                Session.set('isShowStripeProcessNotif',true);
 
-                // Session.set('isShowStripeProcessNotif',true);
-
-                // create a new customer or do nothing if returning customer
-                // create a new order using Stripe order's API
-                /*
-                class SKU {
-                  constructor(id,quantity) {
-                    this.type = 'sku';
-                    this.parent = id.toString();
-                    this.quantity = quantity;
-                  }
-                }
-
-                let shoppingCartXs = ShoppingCart.find({}).fetch();
-                shoppingCartXs = shoppingCartXs.filter(item => item.isAdded);
-                shoppingCartXs = shoppingCartXs.map(item => new SKU(item.id, item.quantity));
-
-
-                const config = {
-                   currency: 'usd',
-                   email: token.email,
-                   items: shoppingCartXs,
-                   shipping: {
-                     name: token.card.name,
-                     address: {
-                       line1: token.card.address_line1,
-                       city: token.card.address_city,
-                       state: token.card.address_state,
-                       postal_code: token.card.address_zip,
-                       country: token.card.address_country,
-                     },
-                   },
-                 }
-
-                 console.log(config);
-
-                Meteor.call('createOrder', config, function (error,result) {
-                  if (error) {
-                    console.log(error.message);
-                  } else {
-                    console.log('createOrder has been invoked!')
-                    console.log(result);
-                  }
-                });
-                */
-
+              
                 // (i) charge the customer for the order using their payment token
                 // creates a Charge object
-                /*
-                Meteor.call('chargeCard', Session.get('total'), token.id, token.email, function (error) {
+
+                Meteor.call('chargeCard', Session.get('final_total'), token.id, function (error) {
                     if (error) {
                         console.log(error.message);
                     } else {
@@ -108,7 +69,6 @@ Template.ShoppingCart.events({
                         console.log(Session.get('total'));
                     }
                 });
-                */
             }
         });
 
@@ -156,15 +116,30 @@ Template.ShoppingCart.helpers({
       let shipping_methods = Session.get('order').shipping_methods;
       for (let i = 0; i < shipping_methods.length; i++) {
         shipping_methods[i].amount = (shipping_methods[i].amount * 0.01).toFixed(2);
-        shipping_methods[i].id = i
+        shipping_methods[i].id = i;
       }
       Session.set('shipping_methods',shipping_methods);
       return Session.get('shipping_methods');
     },
     subtotalPlusST: function() {
-      // add taxes
+      // calculate taxes
+      const items = Session.get('order').items;
+      const taxItems = items.filter(item => item.type == 'tax');
+      let taxes = parseFloat(taxItems[0].amount);
+
       let shipping_cost = parseFloat(Session.get('shipping_cost'));
       let total = Session.get('total');
-      return (total + shipping_cost);
+      let final_total =  (total + shipping_cost + taxes);
+      Session.set('final_total',final_total);
+      return Session.get('final_total');
+    },
+    showSubtotalPlusST: function() {
+      return Session.get('showSubtotalPlusST');
+    },
+    taxesFunc: function() {
+      const items = Session.get('order').items;
+      const taxItems = items.filter(item => item.type == 'tax');
+      console.log(typeof parseInt(taxItems[0]));
+      return taxItems[0];
     }
 });

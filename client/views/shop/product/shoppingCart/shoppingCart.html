@@ -44,21 +44,30 @@
 
                 <hr>
 
-                <div class="ui form">
+                <form class="ui form">
                   <div class="grouped fields">
                 {{#each printShippingMethods}}
                     {{> ShippingMethod}}
                 {{/each}}
                   </div>
-                </div>
+                </form>
 
-                <strong> Subtotal + Shipping: ${{subtotalPlusST}} </strong>
+                {{#if showSubtotalPlusST}}
+                <strong> Subtotal: ${{subtotal}} </strong><br>
+                <strong> {{taxesFunc.description}}: ${{taxesFunc.amount}} </strong><br>
+                <strong> Total (Subtotal + Shipping + Taxes): ${{subtotalPlusST}} </strong>
+                {{/if}}
 
-
-                <br>
-                <button class="ui button" id="customButton">
-                    Checkout
-                </button>
+                <br><br>
+                {{#if showSubtotalPlusST}}
+                  <button class="ui button" id="customButton">
+                      Checkout
+                  </button>
+                {{else}}
+                  <button class="ui disabled button" id="customButton">
+                      Checkout
+                  </button>
+                {{/if}}
 
                 <i class="american express icon"></i>
                 <i class="discover icon"></i>
