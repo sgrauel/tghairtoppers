@@ -11,6 +11,10 @@ Template.Contact.events({
         // prevent form from submitting (along with event func. returning false)
         event.preventDefault();
 
+        // register virtual page view for contact conversion
+        ga('set', 'page', '/contact');
+        ga('send', 'pageview');
+
         // grab data from input fields
         const contactForm = {
             first_name: myForm.find('[name=first_name]').val(),
@@ -40,6 +44,10 @@ Template.Contact.events({
         // clear the fields of the form
         resetForm(myForm);
     }
+});
+
+Template.Contact.onCreated(function(){
+  ga('send', 'pageview');
 });
 
 Template.Contact.onRendered(function() {

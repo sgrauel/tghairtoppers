@@ -18,5 +18,6 @@ Template.Home.onRendered(function () {
 
 });
 
-
-
+Template.Home.onCreated(function () {
+    ga('send', 'pageview');
+});

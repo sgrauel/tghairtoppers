@@ -34,8 +34,15 @@ Template.ShoppingCart.onDestroyed(function() {
   Session.set('showSubtotalPlusST', false);
 });
 
+Template.ShoppingCart.onCreated(function() {
+   ga('send', 'pageview');
+});
+
 Template.ShoppingCart.events({
     'click #customButton': function(e) {
+
+      ga('set', 'page', '/checkout_button');
+      ga('send', 'pageview');
 
         // give user reinforcement for checking out
         $('.ui.button').transition('tada');
@@ -49,14 +56,6 @@ Template.ShoppingCart.events({
             token: function(token) {
 
                 // console.log(token);
-                // show a message on successful processing of request for 3s, then hide
-                // animation for lower notification
-                $('.ui.positive.message').transition('hide');
-                $('.ui.positive.message').transition('fade');
-                setTimeout(hideLowerNotif,3000);
-                Session.set('isShowStripeProcessNotif',true);
-
-
                 // (i) charge the customer for the order using their payment token
                 // creates a Charge object
 
@@ -67,12 +66,26 @@ Template.ShoppingCart.events({
 
                 Meteor.call('chargeCard', Session.get('final_total'), token.id, ids, function (error) {
                     if (error) {
+                        // show negative message if charge card fails
                         console.log(error.message);
                     } else {
+
                         console.log('chargeCard has been invoked!');
                         console.log(token.id);
                         console.log(token.email);
                         console.log(Session.get('total'));
+
+                        // show a message on successful processing of request for 3s, then hide
+                        // animation for lower notification
+                        $('.ui.positive.message').transition('hide');
+                        $('.ui.positive.message').transition('fade');
+                        setTimeout(hideLowerNotif,3000);
+                        Session.set('isShowStripeProcessNotif',true);
+
+                        // count shopping cart conversion
+                        ga('set', 'page', '/checkout');
+                        ga('send', 'pageview');
+
                     }
                 });
             }

@@ -2,17 +2,26 @@
   <form class="ui form" name="myShippingAddress" id="myShippingAddress">
       <div class="field">
           <label for="email">Email: </label>
-          <input name="email" placeholder="Email" type="text">
+          <input name="email" placeholder="Email" type="text" onblur="if(this.value != ''){
+            ga('set', 'page', '/email');
+            ga('send', 'pageview');
+          }">
       </div>
 
       <div class="two fields">
           <div class="field">
               <label for="first_name">First name: </label>
-              <input name="first_name" placeholder="First Name" type="text">
+              <input name="first_name" placeholder="First Name" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/first_name');
+                ga('send', 'pageview');
+              }">
           </div>
           <div class="field">
               <label for="last_name">Last name: </label>
-              <input name="last_name" placeholder="Last Name" type="text">
+              <input name="last_name" placeholder="Last Name" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/last_name');
+                ga('send', 'pageview');
+              }">
           </div>
       </div>
 
@@ -20,10 +29,16 @@
           <label for="address">Street address: </label>
           <div class="fields">
             <div class="twelve wide field">
-              <input name="address" placeholder="Street and number, P.O. box, c/o" type="text">
+              <input name="address" placeholder="Street and number, P.O. box, c/o" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/address');
+                ga('send', 'pageview');
+              }">
             </div>
             <div class="four wide field">
-              <input name="address2" placeholder="Apartment, suite, unit, building, floor, ect" type="text">
+              <input name="address2" placeholder="Apartment, suite, unit, building, floor, ect" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/address2');
+                ga('send', 'pageview');
+              }">
             </div>
           </div>
       </div>
@@ -31,11 +46,17 @@
       <div class="two fields">
           <div class="field">
               <label for="city">City: </label>
-              <input name="city" placeholder="City" type="text">
+              <input name="city" placeholder="City" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/city');
+                ga('send', 'pageview');
+              }">
           </div>
           <div class="field">
               <label for="state">State: </label>
-              <select name="state" class="ui search dropdown">
+              <select name="state" class="ui search dropdown" onblur="if(this.value != ''){
+                ga('set', 'page', '/state');
+                ga('send', 'pageview');
+              }">
                     <option value="" selected="selected"></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -95,11 +116,17 @@
       <div class="two fields">
           <div class="field">
               <label for="zip">Zip: </label>
-              <input name="zip" placeholder="Zip" type="text">
+              <input name="zip" placeholder="Zip" type="text" onblur="if(this.value != ''){
+                ga('set', 'page', '/zip');
+                ga('send', 'pageview');
+              }">
           </div>
           <div class="field">
               <label for="country">Country: </label>
-              <select name="country" class="ui search dropdown">
+              <select name="country" class="ui search dropdown" onblur="if(this.value != ''){
+                ga('set', 'page', '/country');
+                ga('send', 'pageview');
+              }">
                 <option value="" selected="selected"></option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Albania">Albania</option>

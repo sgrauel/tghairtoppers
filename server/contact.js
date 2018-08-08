@@ -15,8 +15,8 @@ Meteor.methods({
 
             // send an email with contact form info
             Email.send({
-                to: "shawn.m.grauel@gmail.com",
-                from: "postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
+                to: Meteor.settings.private.mailgun.to,
+                from: Meteor.settings.private.mailgun.from,
                 subject: (contactForm.first_name + ' ' + contactForm.last_name),
                 text: (contactForm.mainBody + "\n\n" + contactForm.phone)
             });

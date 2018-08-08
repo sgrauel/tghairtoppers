@@ -1,0 +1,20 @@
+{
+    "public": {
+        "ga": {
+            "id": "UA-97853341-2"
+        }
+    },
+    "private": {
+      "stripe_test": "sk_test_28pvn0BRfYU4RKc7wTU1Qt02",
+      "mailgun": {
+        "to": "shawn.m.grauel@gmail.com",
+        "from": "postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
+        "mailgunAddress": "postmaster%40sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
+        "pwd": "6247c8691efa1821bc319b0a4fd6d190"
+      },
+      "woocommerce": {
+        "consumer_key": "ck_06dd5e81405461c7c53865b9d440c421bdd4e3d2",
+        "consumer_secret": "cs_e1b468c01c61bdd24865318b9b5d400188bd1bf3"
+      }
+    }
+}

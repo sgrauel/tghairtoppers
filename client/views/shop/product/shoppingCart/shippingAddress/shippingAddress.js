@@ -111,6 +111,11 @@ Template.ShippingAddress.events({
         // prevent form from submitting (along with event func. returning false)
         event.preventDefault();
 
+        // virtual page view for form submission
+        ga('set', 'page', '/estimate_button');
+        ga('send', 'pageview');
+
+
         // grab data from input fields
         const shippingContactForm = {
             email: myShippingAddress.find('[name=email]').val(),

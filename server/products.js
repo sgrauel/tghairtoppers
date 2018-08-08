@@ -15,7 +15,7 @@ Meteor.methods({
 
         // myjson.products.map(myfunc);
         try {
-          HTTP.call('GET', 'https://www.tghairtoppers.com/wc-api/v3/products', { params: {consumer_key : 'ck_06dd5e81405461c7c53865b9d440c421bdd4e3d2', consumer_secret : 'cs_e1b468c01c61bdd24865318b9b5d400188bd1bf3'}}, function(error, result) {
+          HTTP.call('GET', 'https://www.tghairtoppers.com/wc-api/v3/products', { params: {consumer_key : Meteor.settings.private.woocommerce.consumer_key, consumer_secret : Meteor.settings.private.woocommerce.consumer_secret}}, function(error, result) {
             if (error) {
               throw new Meteor.Error(404, "Error: " + error);
               return;

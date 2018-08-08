@@ -1,4 +1,4 @@
-Stripe = StripeAPI('sk_test_28pvn0BRfYU4RKc7wTU1Qt02');
+Stripe = StripeAPI(Meteor.settings.private.stripe_test);
 Result = {}
 Config = {}
 

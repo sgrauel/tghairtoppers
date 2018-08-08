@@ -38,3 +38,7 @@ Template.Shop.onRendered = function() {
     $('.sidebar').sidebar('overlay',false);
 
 };
+
+Template.Shop.onCreated(function() {
+    ga('send', 'pageview');
+});
