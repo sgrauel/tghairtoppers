@@ -1,0 +1,28 @@
+{
+  "name": "tghairtoppers",
+  "version": "1.0.0",
+  "description": "e-commerce site for selling caps",
+  "main": "lib/router.js",
+  "dependencies": {
+    "http": "^0.0.0",
+    "index.js": "0.0.3",
+    "meteor-node-stubs": "^0.4.1",
+    "stripe": "^6.10.0"
+  },
+  "devDependencies": {
+    "http": "0.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgrauel/tghairtoppers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgrauel/tghairtoppers/issues"
+  },
+  "homepage": "https://github.com/sgrauel/tghairtoppers#readme"
+}

@@ -42,6 +42,26 @@
 
                 {{> ShippingAddress}}
 
+                <br>
+                {{#if sameShip}}
+                <div class="ui checked checkbox">
+                  <input id="same_ship" type="checkbox" checked="">
+                  <label>My shipping address is the same as my billing address</label>
+                </div>
+                {{else}}
+                <div class="ui checkbox">
+                  <input id="same_ship" type="checkbox">
+                  <label>My shipping address is the same as my billing address</label>
+                </div>
+                <hr>
+                {{/if}}
+
+
+                {{#if sameShip}}
+                {{else}}
+                  {{> BillingAddress}}
+                {{/if}}
+
                 <hr>
 
                 <form class="ui form">
@@ -59,7 +79,7 @@
                 {{/if}}
 
                 <br><br>
-                {{#if showSubtotalPlusST}}
+                {{#if canCheckout}}
                   <button class="ui button" id="customButton">
                       Checkout
                   </button>

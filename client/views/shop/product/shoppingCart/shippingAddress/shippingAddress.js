@@ -1,4 +1,5 @@
 let myShippingAddress = {};
+Email = '';
 
 Template.ShippingAddress.onRendered(function() {
     myShippingAddress = $('#myShippingAddress');
@@ -115,6 +116,8 @@ Template.ShippingAddress.events({
         ga('set', 'page', '/estimate_button');
         ga('send', 'pageview');
 
+        // give user reinforcement for checking out
+        $('.ui.button').transition('tada');
 
         // grab data from input fields
         const shippingContactForm = {
@@ -127,6 +130,8 @@ Template.ShippingAddress.events({
             zip: myShippingAddress.find('[name=zip]').val(),
             country: myShippingAddress.find('[name=country]').val()
         };
+
+        Email = shippingContactForm.email;
 
         console.log(shippingContactForm);
 
@@ -163,7 +168,6 @@ Template.ShippingAddress.events({
            }
          };
 
-        // call getContact method to insert Contact object into Contacts collection and send email
         Meteor.call('createOrder',config,function(err,result) {
             if (!err) {
                 console.log("Submitted!");

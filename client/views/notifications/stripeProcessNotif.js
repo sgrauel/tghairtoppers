@@ -16,3 +16,9 @@ Template.stripeProcessNotif.onRendered(function(){
     setTimeout(removeNotif,3000);
 
 });
+
+Template.stripeProcessNotif.helpers({
+    showShippingMethod: function() {
+      return Session.get('shipping_methods')[Selected_shipping_method].description;
+    }
+});

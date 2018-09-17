@@ -12,11 +12,17 @@
         </div>
 
 
+        <!--
         {{#if isLoggedIn }}
             <a id="bookingButton" class="massive ui button" href="{{pathFor 'Booking'}}">
                 Schedule My Consultation
             </a>
         {{/if}}
+      -->
+
+      <a id="bookingButton" class="massive ui button" href="{{pathFor 'Booking'}}">
+          Schedule My Consultation
+      </a>
 
 
         <br>
@@ -34,6 +40,7 @@
 
 
         <div class="ui tablet stackable steps">
+            <a href="{{pathFor 'Booking'}}">
             <div class="link step">
                 <i class="add user icon"></i>
                 <div class="content">
@@ -52,13 +59,17 @@
                     </div>
                 </div>
             </div>
+            </a>
+
+            <a href="{{pathFor 'Booking'}}">
             <div class="link step">
                 <i class="comments icon"></i>
                 <div class="content">
                     <div class="title">Real-time Consultation</div>
-                    <div class="description">Get your Wig Care Assessment in Real-time via Facetime or Hangouts</div>
+                    <div class="description">Get your Wig Care Assessment in real-time via Facetime or Hangouts or in person</div>
                 </div>
             </div>
+            </a>
         </div>
 
         <!--

@@ -7,7 +7,7 @@
     "private": {
       "stripe_test": "sk_test_28pvn0BRfYU4RKc7wTU1Qt02",
       "mailgun": {
-        "to": "shawn.m.grauel@gmail.com",
+        "to": "shawn.m.grauel@protonmail.com",
         "from": "postmaster@sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
         "mailgunAddress": "postmaster%40sandboxfe3a57e769b84679bfd7f49eff063ba2.mailgun.org",
         "pwd": "6247c8691efa1821bc319b0a4fd6d190"

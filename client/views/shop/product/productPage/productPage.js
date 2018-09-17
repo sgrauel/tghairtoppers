@@ -1,6 +1,10 @@
 Session.setDefault('prodId',-1);
 Session.setDefault('showNotif',false);
 
+Template.ProductPage.onCreated(function(){
+  ga('send','pageview');
+});
+
 Template.ProductPage.events({
     "click #altImg": function (event) {
             let $this = $(event.target);

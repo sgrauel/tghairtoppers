@@ -29,6 +29,14 @@ Template.Booking.helpers({
 });
 
 
+Accounts.onEmailVerificationLink(function() {
+    ga("set","page","/email-verified");
+    ga("send","pageview");
+});
+
+Template.Booking.onCreated(function(){
+  ga("send","pageview");
+});
 
 Template.Booking.onRendered(function(){
     Session.setDefault("calendarView",1);

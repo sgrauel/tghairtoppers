@@ -4,6 +4,8 @@ Session.setDefault('shipping_cost',0.0);
 Selected_shipping_method = '';
 Session.setDefault('isShowStripeProcessNotif',false);
 Session.setDefault('showSubtotalPlusST',false);
+Session.setDefault('hasBillingAddress',false);
+Session.setDefault('same_ship',true);
 Session.setDefault('order',{});
 handler = {};
 
@@ -21,10 +23,10 @@ Template.ShoppingCart.onRendered(function() {
     handler =  StripeCheckout.configure({
         key: 'pk_test_3oPENdHQ65sigMm5Hpp47Rkh',
         image: 'https://s3.amazonaws.com/stripe-uploads/acct_18hIJbEtRwJmPSv0merchant-icon-1470919150448-TG_black_on_white.jpg',
-        locale: 'auto',
+        locale: 'auto'
+        /*
         bitcoin: false
-        /*,
-        billingAddress: true,
+        billingAddress: (Session.get('same_ship')) ? false : true,
         shippingAddress: true
         */
     });
@@ -41,6 +43,7 @@ Template.ShoppingCart.onCreated(function() {
 Template.ShoppingCart.events({
     'click #customButton': function(e) {
 
+      // add virtual page view for google analytics tracking
       ga('set', 'page', '/checkout_button');
       ga('send', 'pageview');
 
@@ -52,7 +55,7 @@ Template.ShoppingCart.events({
             name: 'T.G. Hair Toppers, Inc.',
             description: 'Go forward, faith will come to you',
             amount: (Session.get('final_total') * 100),
-            email: 'shawn.m.grauel@gmail.com',
+            email: Email,
             token: function(token) {
 
                 // console.log(token);
@@ -64,7 +67,14 @@ Template.ShoppingCart.events({
                   'selected_shipping_id': Session.get('shipping_methods')[Selected_shipping_method]._id
                 };
 
-                Meteor.call('chargeCard', Session.get('final_total'), token.id, ids, function (error) {
+                /*
+                INPUTS:
+                  (i) final total = subtotal + taxes + shipping
+                  (ii) payment token id
+                  (iii) object containing order id and selected shipping method id
+                  (iv) boolean value indicating whether the shipping address is the same as billing address
+                */
+                Meteor.call('chargeCard', Session.get('final_total'), token, ids, Session.get('same_ship'), function (error) {
                     if (error) {
                         // show negative message if charge card fails
                         console.log(error.message);
@@ -88,6 +98,7 @@ Template.ShoppingCart.events({
 
                     }
                 });
+
             }
         });
 
@@ -95,6 +106,14 @@ Template.ShoppingCart.events({
     },
     "click #closeStripeProcessNotif": function () {
         Session.set('isShowStripeProcessNotif',false);
+    },
+    "click #same_ship": function () {
+      console.log(Session.get('same_ship'));
+      if (Session.get('same_ship') == true) {
+        Session.set('same_ship',false);
+      } else {
+        Session.set('same_ship',true);
+      }
     }
 });
 
@@ -161,5 +180,11 @@ Template.ShoppingCart.helpers({
       const taxItems = items.filter(item => item.type == 'tax');
       console.log(typeof parseInt(taxItems[0]));
       return taxItems[0];
+    },
+    sameShip: function() {
+      return Session.get('same_ship');
+    },
+    canCheckout: function() {
+      return Session.get('showSubtotalPlusST') && (Session.get('same_ship') || Session.get('hasBillingAddress'));
     }
 });

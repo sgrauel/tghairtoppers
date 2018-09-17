@@ -1,47 +1,10 @@
-/*
-Tracker.autorun(function() {
-
-    console.log('logged with uid:' + (Meteor.userId() && Meteor.loggingIn()));
-    console.log(Meteor.userId());
-    console.log(Meteor.loggingIn());
-    if (Meteor.userId() && Meteor.loggingIn()) {
-
-      ga('set', 'page', '/login');
-
-      let userId = Meteor.userId();
-      let user = Meteor.user();
-
-      console.log('hasNotLoginCount: ' + !Meteor.user().hasOwnProperty('login_count'));
-      if (!Meteor.user().hasOwnProperty('login_count')) {
-        user.login_count = 1;
-        Meteor.users.update({_id: userId},user);
-      } else {
-        const inc = user.login_count + 1;
-        Meteor.users.update({_id: userId},{$set: {login_count: inc }});
-      }
-
-      user = Meteor.user();
-
-      console.log('user login count: ' + user.login_count);
-      if (user.login_count > 1) {
-        ga('send', 'pageview', {
-          'dimension1' : 'false'
-        });
-      } else {
-        ga('send', 'pageview', {
-          'dimension1' : 'true'
-        });
-      }
-
-    }
-
-});
-*/
-
 Accounts.onLogin(function(){
 
   ga('set', 'page', '/login');
+  ga('send', 'pageview')
 
+  /*
+  // login segmentation by new user / returning user
   let userId = Meteor.userId();
   let user = Meteor.user();
 
@@ -68,6 +31,7 @@ Accounts.onLogin(function(){
       'dimension1' : 'true'
     });
   }
+  */
 
 });
 
