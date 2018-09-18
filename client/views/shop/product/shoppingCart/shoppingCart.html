@@ -102,6 +102,15 @@
                         <p>Thank you for doing business with us.</p>
                     </div>
                 {{/if}}
+
+                {{#if isShowStripeNegNotif}}
+                <div class="ui negative message" style="width: 50%;">
+                    <div class="header">
+                        Payment failed.
+                    </div>
+                    <p>Something went wrong processsing your payment request. Please contact us to arrage for an alternate means of payment.</p>
+                </div>
+                {{/if}}
             </div>
             <div class="one wide column"></div>
         </div>
@@ -109,6 +118,10 @@
 
     {{#if isShowStripeProcessNotif}}
         {{> stripeProcessNotif }}
+    {{/if}}
+
+    {{#if isShowStripeNegNotif}}
+      {{> stripeNegNotif}}
     {{/if}}
 
 </template>

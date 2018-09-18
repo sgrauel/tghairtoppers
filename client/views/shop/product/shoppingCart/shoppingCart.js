@@ -3,6 +3,7 @@ Session.setDefault('final_total',0.0);
 Session.setDefault('shipping_cost',0.0);
 Selected_shipping_method = '';
 Session.setDefault('isShowStripeProcessNotif',false);
+Session.setDefault('isShowStripeNegNotif',false);
 Session.setDefault('showSubtotalPlusST',false);
 Session.setDefault('hasBillingAddress',false);
 Session.setDefault('same_ship',true);
@@ -11,6 +12,10 @@ handler = {};
 
 hideLowerNotif = function(){
     $('.ui.positive.message').transition('hide');
+};
+
+hideLowerNegNotif = function(){
+    $('.ui.negative.message').transition('hide');
 };
 
 
@@ -77,7 +82,14 @@ Template.ShoppingCart.events({
                 Meteor.call('chargeCard', Session.get('final_total'), token, ids, Session.get('same_ship'), function (error) {
                     if (error) {
                         // show negative message if charge card fails
-                        console.log(error.message);
+                        // console.log(error.message);
+                       $('.ui.negative.message').transition('hide');
+                       $('.ui.negative.message').transition('fade');
+                       // setTimeout(hideLowerNegNotif,3000);
+                        setInterval(hideLowerNegNotif,7000);
+                        clearInterval();
+                       Session.set('isShowStripeNegNotif',true);
+
                     } else {
 
                         console.log('chargeCard has been invoked!');
@@ -89,7 +101,9 @@ Template.ShoppingCart.events({
                         // animation for lower notification
                         $('.ui.positive.message').transition('hide');
                         $('.ui.positive.message').transition('fade');
-                        setTimeout(hideLowerNotif,3000);
+                        // setTimeout(hideLowerNotif,3000);
+                        setInterval(hideLowerNotif,7000);
+                        clearInterval();
                         Session.set('isShowStripeProcessNotif',true);
 
                         // count shopping cart conversion
@@ -106,6 +120,9 @@ Template.ShoppingCart.events({
     },
     "click #closeStripeProcessNotif": function () {
         Session.set('isShowStripeProcessNotif',false);
+    },
+    "click #closeStripeNegNotif": function () {
+        Session.set('isShowStripeNegNotif',false);
     },
     "click #same_ship": function () {
       console.log(Session.get('same_ship'));
@@ -149,6 +166,9 @@ Template.ShoppingCart.helpers({
     },
     isShowStripeProcessNotif: function () {
         return Session.get('isShowStripeProcessNotif');
+    },
+    isShowStripeNegNotif: function () {
+      return Session.get('isShowStripeNegNotif');
     },
     printShippingMethods: function () {
       let shipping_methods = Session.get('order').shipping_methods;
