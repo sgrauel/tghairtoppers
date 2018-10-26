@@ -109,6 +109,7 @@ Template.ShippingAddress.onRendered(function() {
 Template.ShippingAddress.events({
     'submit #myShippingAddress': function (event) {
 
+       Session.set('showShipping', true);
         // prevent form from submitting (along with event func. returning false)
         event.preventDefault();
 

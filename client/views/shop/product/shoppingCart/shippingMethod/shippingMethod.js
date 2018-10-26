@@ -1,4 +1,5 @@
-Session.setDefault('shipping_methods',{});
+
+
 Template.ShippingMethod.events({
   'click input': function(event) {
     console.log(event.currentTarget.id);

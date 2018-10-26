@@ -1,4 +1,9 @@
 {
+    "galaxy.meteor.com": {
+      "env": {
+        "MONGO_URL": "mongodb://Electro:the_sage_0f_wealth@ds163842.mlab.com:63842/tghairtoppers-db"
+      }
+    },
     "public": {
         "ga": {
             "id": "UA-97853341-2"

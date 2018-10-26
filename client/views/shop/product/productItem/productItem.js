@@ -3,7 +3,7 @@ Session.setDefault('productId',-1);
 Session.setDefault('hideAddToCart',true);
 
 Template.ProductItem.events({
-    "click #addToCartShop": function () {
+    "click #addToCartShop": async function () {
 
         Session.set('showNotifShop',true);
         Session.set('productId',this.id);
@@ -22,11 +22,15 @@ Template.ProductItem.events({
         product.quantity = 1;
 
         // upsert ; if document dne, insert else update nothing
-        ShoppingCart.update({id: this.id},
+        try {
+         const res = await ShoppingCart.update({id: this.id},
                 {$setOnInsert: product},
                 {upsert: true, multi: false});
 
-
+                console.log(res);
+        } catch (error) {
+          console.error('From AYNC/Await. Cause of Error: ', error);
+        }
     },
     "click #closeNotif": function () {
         Session.set('showNotifShop',false);

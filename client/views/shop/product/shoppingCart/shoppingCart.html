@@ -64,6 +64,7 @@
 
                 <hr>
 
+                {{#if showShipping}}
                 <form class="ui form">
                   <div class="grouped fields">
                 {{#each printShippingMethods}}
@@ -71,6 +72,7 @@
                 {{/each}}
                   </div>
                 </form>
+                {{/if}}
 
                 {{#if showSubtotalPlusST}}
                 <strong> Subtotal: ${{subtotal}} </strong><br>

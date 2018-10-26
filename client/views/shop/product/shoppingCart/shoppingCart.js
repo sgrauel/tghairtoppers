@@ -1,11 +1,13 @@
 Session.setDefault('total',0.0);
 Session.setDefault('final_total',0.0);
 Session.setDefault('shipping_cost',0.0);
+ShippingMethods = new ReactiveDict('shipping_methods');
 Selected_shipping_method = '';
 Session.setDefault('isShowStripeProcessNotif',false);
 Session.setDefault('isShowStripeNegNotif',false);
 Session.setDefault('showSubtotalPlusST',false);
 Session.setDefault('hasBillingAddress',false);
+Session.setDefault('showShipping',true);
 Session.setDefault('same_ship',true);
 Session.setDefault('order',{});
 handler = {};
@@ -17,7 +19,6 @@ hideLowerNotif = function(){
 hideLowerNegNotif = function(){
     $('.ui.negative.message').transition('hide');
 };
-
 
 Template.ShoppingCart.onRendered(function() {
 
@@ -39,10 +40,12 @@ Template.ShoppingCart.onRendered(function() {
 
 Template.ShoppingCart.onDestroyed(function() {
   Session.set('showSubtotalPlusST', false);
+  Session.set('showShipping', false);
 });
 
 Template.ShoppingCart.onCreated(function() {
    ga('send', 'pageview');
+   Session.set('showShipping',false);
 });
 
 Template.ShoppingCart.events({
@@ -69,7 +72,7 @@ Template.ShoppingCart.events({
 
                 const ids = {
                   'order_id': Session.get('order').id,
-                  'selected_shipping_id': Session.get('shipping_methods')[Selected_shipping_method]._id
+                  'selected_shipping_id': ShippingMethods.get('list')[Selected_shipping_method]._id
                 };
 
                 /*
@@ -177,8 +180,10 @@ Template.ShoppingCart.helpers({
         shipping_methods[i]._id = shipping_methods[i].id;
         shipping_methods[i].id = i;
       }
-      Session.set('shipping_methods',shipping_methods);
-      return Session.get('shipping_methods');
+
+      ShippingMethods.set('list',shipping_methods);
+      return ShippingMethods.get('list');
+
     },
     subtotalPlusST: function() {
       // calculate taxes
@@ -194,6 +199,9 @@ Template.ShoppingCart.helpers({
     },
     showSubtotalPlusST: function() {
       return Session.get('showSubtotalPlusST');
+    },
+    showShipping: function() {
+      return Session.get('showShipping');
     },
     taxesFunc: function() {
       const items = Session.get('order').items;

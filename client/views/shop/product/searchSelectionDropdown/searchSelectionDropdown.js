@@ -1,9 +1,14 @@
+Template.searchSelectionDropdown.onRendered(function(){
+    $('.ui.dropdown').dropdown();
+});
+
 Template.searchSelectionDropdown.events({
     "change #searchSelectionDropdown": function () {
 
         // parse categoryId from dropdown
         const categoryId = parseInt($('#searchSelectionDropdown').val());
         Session.set('parentCategoryId',categoryId);
+
 
         Meteor.call('getPriceMinMax',Session.get('parentCategoryId'), function (error,result) {
             if (!error) {

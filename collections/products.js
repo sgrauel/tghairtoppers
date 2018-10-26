@@ -1,7 +1,5 @@
 Products = new Mongo.Collection('products');
 Categories = new Mongo.Collection('categories');
-ShippingMethods = new Mongo.Collection('shipping_methods');
-
 // define a ground db local collection for shopping cart items
 /*
 
