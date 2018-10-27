@@ -1,5 +1,6 @@
 let myShippingAddress = {};
 Email = '';
+Wholesale = false;
 
 Template.ShippingAddress.onRendered(function() {
     myShippingAddress = $('#myShippingAddress');
@@ -122,6 +123,7 @@ Template.ShippingAddress.events({
 
         // grab data from input fields
         const shippingContactForm = {
+            isWholesale: myShippingAddress.find('[name=wholesale]').val(),
             email: myShippingAddress.find('[name=email]').val(),
             name: (myShippingAddress.find('[name=first_name]').val() + ' ' + myShippingAddress.find('[name=last_name]').val()),
             address_line1: myShippingAddress.find('[name=address]').val(),
@@ -134,7 +136,12 @@ Template.ShippingAddress.events({
 
         Email = shippingContactForm.email;
 
-        console.log(shippingContactForm);
+        // set global variable wholesale to segment/track wholesale vs. regular users
+        if (shippingContactForm.isWholesale == "on") {
+          Wholesale = true;
+        } else {
+          Wholesale = false;
+        }
 
 
         // create a new order using Stripe order's API

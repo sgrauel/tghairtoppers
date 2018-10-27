@@ -1,6 +1,13 @@
 <template name="ShippingAddress">
   <form class="ui form" name="myShippingAddress" id="myShippingAddress">
       <div class="field">
+        <div class="ui checked checkbox">
+          <input name="wholesale" type="checkbox">
+          <label>I am a wholesale client</label>
+        </div>
+      </div>
+
+      <div class="field">
          <label for="email">Email: </label>
           <input name="email" placeholder="Email" type="text" onblur="if(this.value != ''){
             ga('set', 'page', '/email');

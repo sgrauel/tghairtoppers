@@ -110,8 +110,13 @@ Template.ShoppingCart.events({
                         Session.set('isShowStripeProcessNotif',true);
 
                         // count shopping cart conversion
-                        ga('set', 'page', '/checkout');
-                        ga('send', 'pageview');
+                        if(Wholesale) {
+                          ga('set', 'page', '/checkout_wholesale');
+                          ga('send', 'pageview');
+                        } else {
+                          ga('set', 'page', '/checkout_regular');
+                          ga('send', 'pageview');
+                        }
 
                     }
                 });

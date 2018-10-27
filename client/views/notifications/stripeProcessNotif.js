@@ -17,8 +17,9 @@ Template.stripeProcessNotif.onRendered(function(){
 
 });
 
+
 Template.stripeProcessNotif.helpers({
     showShippingMethod: function() {
-      return Session.get('shipping_methods')[Selected_shipping_method].description;
+      return ShippingMethods.get('list')[Selected_shipping_method].delivery_estimate.date;
     }
 });
