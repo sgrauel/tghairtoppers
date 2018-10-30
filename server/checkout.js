@@ -54,6 +54,9 @@ Meteor.methods({
             },
             name: Config.shipping.name
             // phone:
+          },
+          metadata: {
+            'isWholesale': Config.metadata.isWholesale
           }
         });
 

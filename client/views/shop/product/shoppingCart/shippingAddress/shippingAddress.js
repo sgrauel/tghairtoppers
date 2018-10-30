@@ -172,7 +172,8 @@ Template.ShippingAddress.events({
              }
            },
            metadata: {
-             'address_line2': shippingContactForm.address_line2
+             'address_line2': shippingContactForm.address_line2,
+             'isWholesale' : Wholesale
            }
          };
 

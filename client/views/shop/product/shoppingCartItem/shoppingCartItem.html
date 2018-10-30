@@ -5,14 +5,40 @@
                 <td>{{title}}</td>
                 <td>${{price}}</td>
                 <td>
+                    <button id="decrement100" class="mini ui icon left attached red button">
+                        <i class="minus icon"></i>
+                        <p> 100 </p>
+                    </button>
+                    <button id="decrement10" class="mini ui icon left attached red button">
+                        <i class="minus icon"></i>
+                        <p> 10 </p>
+                    </button>
+                    <button id="decrement5" class="mini ui icon left attached red button">
+                        <i class="minus icon"></i>
+                        <p> 5 </p>
+                    </button>
                     <button id="decrement" class="mini ui icon left attached red button">
                         <i class="minus icon"></i>
+                        <p> 1 </p>
                     </button>
                     <div class="ui mini input">
                         <input value="{{quantity}}" type="text" readonly>
                     </div>
                     <button id="increment" class="right attached mini ui icon green button">
                         <i class="plus icon"></i>
+                        <p> 1 </p>
+                    </button>
+                    <button id="increment5" class="right attached mini ui icon green button">
+                        <i class="plus icon"></i>
+                        <p> 5 </p>
+                    </button>
+                    <button id="increment10" class="right attached mini ui icon green button">
+                        <i class="plus icon"></i>
+                        <p> 10 </p>
+                    </button>
+                    <button id="increment100" class="right attached mini ui icon green button">
+                        <i class="plus icon"></i>
+                        <p> 100 </p>
                     </button>
                 </td>
                 <td>${{totalPrice}}</td>
